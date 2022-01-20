@@ -1,0 +1,14 @@
+.navbar-brand p {
+    display: inline-block;
+    position: relative;
+    color: whitesmoke;
+    font-weight: 600;
+    font-size: 14px;
+    margin: 0;
+}
+.navbar-brand p span {
+    display: block;
+}
+.fa-stack{
+    height: 1.5em;
+}
