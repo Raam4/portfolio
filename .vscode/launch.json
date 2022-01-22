@@ -1,0 +1,14 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot-PortfolioApplication<portfolio>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "console": "internalConsole",
+            "mainClass": "com.raama.portfolio.PortfolioApplication",
+            "projectName": "portfolio",
+            "args": ""
+        }
+    ]
+}

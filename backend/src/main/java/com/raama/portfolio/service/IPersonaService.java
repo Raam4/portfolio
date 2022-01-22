@@ -1,7 +1,6 @@
 package com.raama.portfolio.service;
 
 import com.raama.portfolio.model.Persona;
-import com.raama.portfolio.model.Ubicacion;
 import java.util.List;
 
 public interface IPersonaService {
