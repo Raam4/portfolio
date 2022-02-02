@@ -1,0 +1,22 @@
+<p-menubar [model]="items" styleClass="sideNav">
+    <ng-template pTemplate="start">
+        <a href="#"><p-image src="assets/images/profilepic.jpg" styleClass="profile-pic" atl="Profile pic"></p-image></a>
+    </ng-template>
+    <ng-template pTemplate="end">
+        <ul id="social-icons">
+            <li class="social-icon">
+                <a class="p-menuitem-link" href="#"><i class="pi pi-linkedin"></i></a>
+            </li>
+            <li class="social-icon">
+                <a class="p-menuitem-link" href="#"><i class="pi pi-github"></i></a>
+            </li>
+            <li class="social-icon">
+                <a class="p-menuitem-link" href="#"><i class="pi pi-whatsapp"></i></a>
+            </li>
+            <li class="social-icon">
+                <a class="p-menuitem-link" href="#"><i class="pi pi-envelope"></i></a>
+            </li>
+        </ul>
+        <p-button label="Login" icon="pi pi-sign-in" class="p-button-success"></p-button>
+    </ng-template>
+</p-menubar>

@@ -14,7 +14,7 @@
 	<name>portfolio</name>
 	<description>backend para portfolio web</description>
 	<properties>
-		<java.version>11</java.version>
+		<java.version>12</java.version>
 	</properties>
 	<dependencies>
 		<dependency>

@@ -1,0 +1,10 @@
+body {
+    margin: 0;
+    height: 100%;
+    overflow-x: hidden;
+    overflow-y: auto;
+    background-color: var(--surface-ground);
+    color: var(--text-color);
+    font-weight: normal;
+    font-family: var(--font-family);
+}
