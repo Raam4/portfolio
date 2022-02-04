@@ -1,3 +1,20 @@
+@font-face {
+  font-family: 'Roboto Slab';
+  src: url('assets/fonts/RobotoSlab-Variable.ttf');
+  font-weight: 100 900;
+  font-stretch: 25% 150%;
+}
+
+*{
+  font-family: 'Roboto Slab';
+}
+
+@media (min-width: 960px) {
+    body {
+      padding-top: 0;
+      padding-left: 17rem;
+    }
+}
 body {
     margin: 0;
     height: 100%;
@@ -6,5 +23,4 @@ body {
     background-color: var(--surface-ground);
     color: var(--text-color);
     font-weight: normal;
-    font-family: var(--font-family);
 }

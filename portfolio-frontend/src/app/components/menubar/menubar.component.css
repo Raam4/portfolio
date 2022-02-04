@@ -1,5 +1,5 @@
 .sideNav{
-    border-right: 2.5px solid var(--surface-border);
+    border: 0;
     border-radius: 0;
 }
 .p-menubar .social-icon {
@@ -10,7 +10,8 @@
     align-items: center;
     justify-content: center;
 }
-@media (min-width: 340), (max-width: 960px){
+
+@media (max-width: 960px){
     .sideNav .p-menubar-start p-image{
         display: none;
     }
@@ -53,7 +54,7 @@
     .sideNav .p-menubar-start img {
         max-width: 9rem;
         max-height: 9rem;
-        border: 0.5rem solid var(--surface-border);
+        border: 0.5rem solid var(--primary-color);
         border-radius: 50%;
     }
     .sideNav p-menubarsub {

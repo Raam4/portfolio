@@ -9,11 +9,13 @@ import { ImageModule } from 'primeng/image';
 
 import { AppComponent } from './app.component';
 import { MenubarComponent } from './components/menubar/menubar.component';
+import { AboutComponent } from './components/about/about.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    MenubarComponent
+    MenubarComponent,
+    AboutComponent
   ],
   imports: [
     BrowserModule,
