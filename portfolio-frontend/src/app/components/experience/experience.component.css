@@ -1,0 +1,26 @@
+#experience{
+    background: url('../../../assets/images/mockup1.jpg') center;
+    background-size: cover;
+}
+/*.p-panel-header, .p-panel-content, .p-panel-footer{
+    background: rgba(0, 0, 0, 0.75)!important;
+}*/
+.exp-panel{
+    margin: 1.5rem;
+}
+.p-panel-header{
+    justify-content: space-evenly;
+}
+h2{
+    margin: 0;
+}
+.ferracioli-logo{
+    width: 123.5px;
+    height: 25.25px;
+    image-rendering: optimizeQuality;
+}
+@media (min-width: 960px) {
+    #experience{
+        background-attachment: fixed;
+    }
+}
