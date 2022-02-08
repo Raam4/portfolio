@@ -1,0 +1,9 @@
+#education{
+    background: url('../../../assets/images/mockup1.jpg') center;
+    background-size: cover;
+}
+@media (min-width: 960px) {
+    #education{
+        background-attachment: fixed;
+    }
+}

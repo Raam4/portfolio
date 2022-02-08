@@ -1,0 +1,9 @@
+#projects{
+    background: url('../../../assets/images/notebook.jpg') center;
+    background-size: cover;
+}
+@media (min-width: 960px) {
+    #projects{
+        background-attachment: fixed;
+    }
+}

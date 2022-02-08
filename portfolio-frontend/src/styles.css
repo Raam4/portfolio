@@ -16,10 +16,9 @@
     }
     section{
       padding-bottom: 5rem;
-      min-height: 100vh;
     }
     .content{
-        padding-left: 5rem;
+      padding-left: 5rem;
     }
 }
 body {
@@ -33,6 +32,7 @@ body {
 }
 section{
   width: 100%;
+  min-height: 100vh;
   display: flex;
   align-items: center;
   padding-left: 1rem;
@@ -42,6 +42,17 @@ section{
 }
 .content{
   width: 100%;
+}
+.content-heading{
+  text-align: center;
+}
+.content-heading h1{
+  display: inline-block;
+  margin: 0;
+  padding: 5px 10px;
+  font-size: 2.5rem;
+  background: rgba(0, 0, 0, 0.35);
+  border: 1px solid var(--primary-color);
 }
 .accent{
   color: var(--primary-color);

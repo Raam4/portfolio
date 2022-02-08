@@ -1,6 +1,9 @@
 <p-menubar [model]="items" styleClass="sideNav">
     <ng-template pTemplate="start">
-        <a href="#home"><p-image src="assets/images/profilepic.jpg" styleClass="profile-pic" atl="Profile pic"></p-image></a>
+        <a routerLink="/home">
+            <p-image src="assets/images/profilepic.jpg" styleClass="profile-pic" atl="Profile pic"></p-image>
+            <h3>Ramiro <span class="accent">Cardozo</span></h3>
+        </a>
     </ng-template>
     <ng-template pTemplate="end">
         <ul id="social-icons">

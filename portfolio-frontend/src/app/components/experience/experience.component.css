@@ -2,17 +2,6 @@
     background: url('../../../assets/images/keyboard2.jpg') center;
     background-size: cover;
 }
-.exp-heading{
-    text-align: center;
-}
-.exp-heading h1{
-    display: inline-block;
-    margin: 0;
-    padding: 5px 10px;
-    font-size: 2.5rem;
-    background: rgba(0, 0, 0, 0.35);
-    border: 1px solid var(--primary-color);
-}
 .exp-panel{
     margin: 1.5rem;
 }
