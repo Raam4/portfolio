@@ -1,23 +1,34 @@
 #experience{
-    background: url('../../../assets/images/mockup1.jpg') center;
+    background: url('../../../assets/images/keyboard2.jpg') center;
     background-size: cover;
 }
-/*.p-panel-header, .p-panel-content, .p-panel-footer{
-    background: rgba(0, 0, 0, 0.75)!important;
-}*/
+.exp-heading{
+    text-align: center;
+}
+.exp-heading h1{
+    display: inline-block;
+    margin: 0;
+    padding: 5px 10px;
+    font-size: 2.5rem;
+    background: rgba(0, 0, 0, 0.35);
+    border: 1px solid var(--primary-color);
+}
 .exp-panel{
     margin: 1.5rem;
 }
-.p-panel-header{
-    justify-content: space-evenly;
-}
-h2{
+.exp-panel-header{
     margin: 0;
 }
 .ferracioli-logo{
     width: 123.5px;
     height: 25.25px;
-    image-rendering: optimizeQuality;
+}
+.betel-logo{
+    width: 90px ;
+    height: 44px;
+}
+.p-panel-footer{
+    text-align: end;
 }
 @media (min-width: 960px) {
     #experience{

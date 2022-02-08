@@ -2,7 +2,7 @@
     background: url('../../../assets/images/keyboard3.jpg') center;
     background-size: cover;
 }
-h1{
+.home-name{
     line-height: 1;
     font-size: 5rem;
     margin: 5px 0 10px;
