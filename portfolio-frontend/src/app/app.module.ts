@@ -13,6 +13,7 @@ import { ScrollTopModule } from 'primeng/scrolltop';
 import { PanelModule } from 'primeng/panel';
 import { TimelineModule } from 'primeng/timeline';
 import { CardModule } from 'primeng/card';
+import { GalleriaModule } from 'primeng/galleria';
 
 import { AppComponent } from './app.component';
 import { MenubarComponent } from './components/menubar/menubar.component';
@@ -51,7 +52,8 @@ import { ProjectsComponent } from './components/projects/projects.component';
     ScrollTopModule,
     PanelModule,
     TimelineModule,
-    CardModule
+    CardModule,
+    GalleriaModule
   ],
   providers: [],
   bootstrap: [AppComponent]
