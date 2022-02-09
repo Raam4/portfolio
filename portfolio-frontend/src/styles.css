@@ -43,16 +43,12 @@ section{
 .content{
   width: 100%;
 }
-.content-heading{
-  text-align: center;
+.fieldset-box{
+  background: rgba(0, 0, 0, 0.45);
 }
-.content-heading h1{
-  display: inline-block;
+.fieldset-header{
   margin: 0;
-  padding: 5px 10px;
-  font-size: 2.5rem;
-  background: rgba(0, 0, 0, 0.35);
-  border: 1px solid var(--primary-color);
+  font-size: 2rem;
 }
 .accent{
   color: var(--primary-color);

@@ -1,0 +1,21 @@
+#skills{
+    background: url('../../../assets/images/notebook.jpg') center;
+    background-size: cover;
+}
+.p-divider-content{
+    border: 1px solid whitesmoke;
+}
+#soft-skills{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+#soft-skills .soft{
+    margin: 0.5rem;
+}
+@media (min-width: 960px) {
+    #skills{
+        background-attachment: fixed;
+    }
+}

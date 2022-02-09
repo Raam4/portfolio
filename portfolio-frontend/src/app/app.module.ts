@@ -14,6 +14,8 @@ import { PanelModule } from 'primeng/panel';
 import { TimelineModule } from 'primeng/timeline';
 import { CardModule } from 'primeng/card';
 import { GalleriaModule } from 'primeng/galleria';
+import { DividerModule } from 'primeng/divider';
+import { ChipModule } from 'primeng/chip';
 
 import { AppComponent } from './app.component';
 import { MenubarComponent } from './components/menubar/menubar.component';
@@ -22,6 +24,7 @@ import { HomeComponent } from './components/home/home.component';
 import { ExperienceComponent } from './components/experience/experience.component';
 import { EducationComponent } from './components/education/education.component';
 import { ProjectsComponent } from './components/projects/projects.component';
+import { SkillsComponent } from './components/skills/skills.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +34,8 @@ import { ProjectsComponent } from './components/projects/projects.component';
     HomeComponent,
     ExperienceComponent,
     EducationComponent,
-    ProjectsComponent
+    ProjectsComponent,
+    SkillsComponent
   ],
   imports: [
     BrowserModule,
@@ -40,7 +44,8 @@ import { ProjectsComponent } from './components/projects/projects.component';
       {path: 'about', component: AboutComponent},
       {path: 'experience', component: ExperienceComponent},
       {path: 'education', component: EducationComponent},
-      {path: 'projects', component: ProjectsComponent}
+      {path: 'projects', component: ProjectsComponent},
+      {path: 'skills', component: SkillsComponent}
     ]),
     BrowserAnimationsModule,
     ButtonModule,
@@ -53,7 +58,9 @@ import { ProjectsComponent } from './components/projects/projects.component';
     PanelModule,
     TimelineModule,
     CardModule,
-    GalleriaModule
+    GalleriaModule,
+    DividerModule,
+    ChipModule
   ],
   providers: [],
   bootstrap: [AppComponent]

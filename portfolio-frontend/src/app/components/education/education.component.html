@@ -1,7 +1,7 @@
 <section id="education">
     <div class="content">
-        <div class="content-heading">
-            <h1 class="accent">Education</h1>
+        <p-fieldset styleClass="fieldset-box">
+            <ng-template pTemplate="header"><h1 class="accent fieldset-header">Education</h1></ng-template>
             <p-timeline [value]="events" align="alternate" styleClass="customized-timeline" [style]="{'margin-top': '5rem'}">
                 <ng-template pTemplate="content" let-event>
                     <p-card [header]="event.title" [subheader]="event.level">
@@ -13,6 +13,6 @@
                     </p-card>
                 </ng-template>
             </p-timeline>
-        </div>
+        </p-fieldset>
     </div>
 </section>

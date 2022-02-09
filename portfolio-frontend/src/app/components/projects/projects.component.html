@@ -1,23 +1,23 @@
 <section id="projects">
     <div class="content">
-        <div class="content-heading">
-            <h1 class="accent">Projects</h1>
-        </div>
-        <div  [style]="{'margin-top':'2.5rem', 'display':'flex', 'justify-content':'center'}">
-            <p-galleria [value]="projects" [numVisible]="5" [showIndicators]="true" [showThumbnails]="false" [containerStyle]="{'max-width': '580px'}">
-                <ng-template pTemplate="item" let-item>
-                    <p-card header="{{item.title}}" subheader="{{item.technologies}}">
-                        <ng-template pTemplate="header">
-                            <p-image src="assets/images/betel-logo.jpg" width="400px" height="300px"></p-image>
-                        </ng-template>
-                        <p>{{item.description}}</p>
-                        <ng-template pTemplate="footer">
-                            <span class="accent">{{item.date}}</span>
-                        </ng-template>
-                    </p-card>
-                </ng-template>
-            </p-galleria>
-        </div>
+        <p-fieldset styleClass="fieldset-box">
+            <ng-template pTemplate="header"><h1 class="accent fieldset-header">Projects</h1></ng-template>
+            <div  [style]="{'margin-top':'2.5rem', 'display':'flex', 'justify-content':'center'}">
+                <p-galleria [value]="projects" [numVisible]="5" [showIndicators]="true" [showThumbnails]="false" [containerStyle]="{'max-width': '580px'}">
+                    <ng-template pTemplate="item" let-item>
+                        <p-card header="{{item.title}}" subheader="{{item.technologies}}">
+                            <ng-template pTemplate="header">
+                                <p-image src="assets/images/betel-logo.jpg" width="400px" height="300px"></p-image>
+                            </ng-template>
+                            <p>{{item.description}}</p>
+                            <ng-template pTemplate="footer">
+                                <span class="accent">{{item.date}}</span>
+                            </ng-template>
+                        </p-card>
+                    </ng-template>
+                </p-galleria>
+            </div>
+        </p-fieldset>
     </div>
 </section>
 

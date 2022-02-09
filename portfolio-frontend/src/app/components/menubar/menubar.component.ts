@@ -34,10 +34,6 @@ export class MenubarComponent implements OnInit {
       {
         label: 'Skills',
         routerLink: '/skills'
-      },
-      {
-        label: 'Technologies',
-        routerLink: '/technologies'
       }
     ];
   }

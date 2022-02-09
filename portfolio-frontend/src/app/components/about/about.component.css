@@ -2,12 +2,6 @@
     background: url('../../../assets/images/pc.jpg') center;
     background-size: cover;
 }
-.about-box{
-    background: rgba(0, 0, 0, 0.75);
-}
-.about-header{
-    margin: 0;
-}
 @media (min-width: 960px) {
     #about{
         background-attachment: fixed;
