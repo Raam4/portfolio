@@ -2,17 +2,25 @@
     background: url('../../../assets/images/notebook.jpg') center;
     background-size: cover;
 }
+.fieldset-box-skills{
+    background: rgba(255, 255, 255, 0.15);
+  }
 .p-divider-content{
     border: 1px solid whitesmoke;
 }
-#soft-skills{
+.skill-items{
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: space-evenly;
 }
-#soft-skills .soft{
+.soft{
     margin: 0.5rem;
+}
+.tech-logo{
+    width: 5.5rem;
+    height: 5.5rem;
+    margin: 0.75rem;
 }
 @media (min-width: 960px) {
     #skills{
