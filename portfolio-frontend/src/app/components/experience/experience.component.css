@@ -8,6 +8,9 @@
 .exp-panel-header{
     margin: 0;
 }
+.position{
+    color: var(--text-color-secondary);
+}
 .ferracioli-logo{
     width: 123.5px;
     height: 25.25px;

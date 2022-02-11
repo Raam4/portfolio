@@ -2,14 +2,15 @@
     <div class="content">
         <p-fieldset styleClass="fieldset-box">
             <ng-template pTemplate="header"><h1 class="accent fieldset-header">Projects</h1></ng-template>
-            <div  [style]="{'margin-top':'2.5rem', 'display':'flex', 'justify-content':'center'}">
-                <p-galleria [value]="projects" [numVisible]="5" [showIndicators]="true" [showThumbnails]="false" [containerStyle]="{'max-width': '580px'}">
+            <div id="gal-content">
+                <p-galleria [value]="projects" [showIndicators]="true" [showThumbnails]="false" [containerStyle]="{'max-width': '650px'}" [circular]="true" [autoPlay]="true" [transitionInterval]="10000">
                     <ng-template pTemplate="item" let-item>
-                        <p-card header="{{item.title}}" subheader="{{item.technologies}}">
+                        <p-card header={{item.title}} subheader={{item.technologies}}>
                             <ng-template pTemplate="header">
-                                <p-image src="assets/images/betel-logo.jpg" width="400px" height="300px"></p-image>
+                                <p-image src={{item.img}} width="400px" height="300px"></p-image>
                             </ng-template>
                             <p>{{item.description}}</p>
+                            <a href={{item.link}} class="pro-link"><p-chip label="Go to project" styleClass="custom-chip"></p-chip></a>
                             <ng-template pTemplate="footer">
                                 <span class="accent">{{item.date}}</span>
                             </ng-template>

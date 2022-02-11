@@ -2,6 +2,9 @@
     background: url('../../../assets/images/mockup1.jpg') center;
     background-size: cover;
 }
+.p-timeline-event{
+    margin-top: 2.5rem;
+}
 @media (min-width: 960px) {
     #education{
         background-attachment: fixed;

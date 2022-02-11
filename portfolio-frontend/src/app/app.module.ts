@@ -16,6 +16,7 @@ import { CardModule } from 'primeng/card';
 import { GalleriaModule } from 'primeng/galleria';
 import { DividerModule } from 'primeng/divider';
 import { ChipModule } from 'primeng/chip';
+import { TooltipModule } from 'primeng/tooltip';
 
 import { AppComponent } from './app.component';
 import { MenubarComponent } from './components/menubar/menubar.component';
@@ -45,7 +46,9 @@ import { SkillsComponent } from './components/skills/skills.component';
       {path: 'experience', component: ExperienceComponent},
       {path: 'education', component: EducationComponent},
       {path: 'projects', component: ProjectsComponent},
-      {path: 'skills', component: SkillsComponent}
+      {path: 'skills', component: SkillsComponent},
+      {path: '', redirectTo: '/home', pathMatch: 'full'},
+      {path: '**', redirectTo: '/home'}
     ]),
     BrowserAnimationsModule,
     ButtonModule,
@@ -60,7 +63,8 @@ import { SkillsComponent } from './components/skills/skills.component';
     CardModule,
     GalleriaModule,
     DividerModule,
-    ChipModule
+    ChipModule,
+    TooltipModule
   ],
   providers: [],
   bootstrap: [AppComponent]

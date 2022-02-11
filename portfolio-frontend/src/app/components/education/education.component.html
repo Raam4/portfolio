@@ -2,14 +2,12 @@
     <div class="content">
         <p-fieldset styleClass="fieldset-box">
             <ng-template pTemplate="header"><h1 class="accent fieldset-header">Education</h1></ng-template>
-            <p-timeline [value]="events" align="alternate" styleClass="customized-timeline" [style]="{'margin-top': '5rem'}">
-                <ng-template pTemplate="content" let-event>
-                    <p-card [header]="event.title" [subheader]="event.level">
-                        <span class="accent">{{event.establishment}}</span>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore sed consequuntur error repudiandae numquam deserunt
-                            quisquam repellat libero asperiores earum nam nobis, culpa ratione quam perferendis esse, cupiditate neque quas!
-                        </p>
-                        <span class="accent">{{event.year}}</span>
+            <p-timeline [value]="titles" align="alternate" styleClass="customized-timeline">
+                <ng-template pTemplate="content" let-title>
+                    <p-card [header]="title.title" [subheader]="title.level" [style]="{'min-width':'250px'}">
+                        <span class="accent">{{title.establishment}}</span>
+                        <p>{{title.description}}</p>
+                        <span class="accent">{{title.year}}</span>
                     </p-card>
                 </ng-template>
             </p-timeline>

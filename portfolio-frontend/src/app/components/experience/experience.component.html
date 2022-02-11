@@ -2,22 +2,14 @@
     <div class="content">
         <p-fieldset styleClass="fieldset-box">
             <ng-template pTemplate="header"><h1 class="accent fieldset-header">Experience</h1></ng-template>
-            <p-panel styleClass="exp-panel">
+            <p-panel styleClass="exp-panel" *ngFor="let job of jobs">
                 <ng-template pTemplate="header">
-                    <h2 class="exp-panel-header">Casa Ferracioli S.A.</h2><img src="assets/images/logos/ferracioli-logo.gif" class="ferracioli-logo">
+                    <h2 class="exp-panel-header accent">{{job.place}}</h2><img src={{job.logo}} class={{job.logoClass}}>
                 </ng-template>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam odio porro modi laborum, eius suscipit? Quod cumque numquam architecto officiis, ullam omnis libero eum praesentium inventore alias. Similique, pariatur animi?</p>
+                <span class="position">{{job.position}}</span>
+                <p>{{job.description}}</p>
                 <ng-template pTemplate="footer">
-                    <span class="accent">June 2019 - Present</span>
-                </ng-template>
-            </p-panel>
-            <p-panel styleClass="exp-panel">
-                <ng-template pTemplate="header">
-                    <h2 class="exp-panel-header">Betel Tu Estilo Neuquén</h2><img src="assets/images/logos/betel-logo.jpg" class="betel-logo">
-                </ng-template>
-                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eligendi in fugiat voluptates quaerat. Deserunt dignissimos ullam tenetur libero culpa? Enim rem expedita dignissimos atque voluptatibus temporibus odio ab magnam totam!</p>
-                <ng-template pTemplate="footer">
-                    <span class="accent">December 2017 - Present</span>
+                    <span class="accent">{{job.placeTime}}</span>
                 </ng-template>
             </p-panel>
         </p-fieldset>
