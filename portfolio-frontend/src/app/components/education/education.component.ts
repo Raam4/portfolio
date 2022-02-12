@@ -18,19 +18,9 @@ export class EducationComponent implements OnInit {
         location: 'Neuquén',
         establishment: 'National University of Comahue',
         title: 'University degree in web development',
-        description: 'I am in the last year of this career. So far I have learned about frontend web programming with HTML, CSS and \
+        description: 'I\'m in the last year of this career. So far I have learned about frontend web programming with HTML, CSS and \
          JavaScript, and backend with PHP and MySQL. I also learned about graphic design, and IT security related to the web. \
          In this last year I will learn about analysis, design and documentation of systems, and about frameworks and interoperability.'
-      },
-      {
-        level: 'University',
-        year: '2016 - 2018',
-        location: 'Neuquén',
-        establishment: 'National University of Comahue',
-        title: 'Bachelor of computer science',
-        description: 'It is important to mention that I studied this career for two years, since I learned the basics about programming,\
-         databases and computing in general. It was what prompted me to follow this path of knowledge to aspire to be a developer.\
-         I\'ve suspended it because I started working to become independent, but I want to continue it one day.'
       },
       {
         level: 'Professional education',
@@ -49,6 +39,16 @@ export class EducationComponent implements OnInit {
         title: 'Installer and support of informatic systems',
         description: 'With this course I know how to learn to install various computer systems, especially computers of any brand,\
          architecture or operating system. I\'ve also learned how to repair and optimize them.'
+      },
+      {
+        level: 'University',
+        year: '2016 - 2018',
+        location: 'Neuquén',
+        establishment: 'National University of Comahue',
+        title: 'Bachelor of computer science',
+        description: 'It\'s important to mention that I studied this career for two years, since I learned the basics about programming,\
+         databases and computing in general. It was what prompted me to follow this path of knowledge to aspire to be a developer.\
+         I\'ve suspended it because I started working to become independent, but I want to continue it one day.'
       },
       {
         level: 'Highschool',

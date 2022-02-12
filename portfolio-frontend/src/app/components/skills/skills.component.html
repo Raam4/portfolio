@@ -12,35 +12,25 @@
                 <h4 class="accent">Frontend</h4>
             </p-divider>
             <div class="skill-items">
-                <img src="../../../assets/images/logos/html-5.svg" pTooltip="HTML 5" tooltipPosition="bottom">
-                <img src="../../../assets/images/logos/css-3.svg" pTooltip="CSS 3" tooltipPosition="bottom">
-                <img src="../../../assets/images/logos/javascript.svg" pTooltip="JavaScript" tooltipPosition="bottom">
-                <img src="../../../assets/images/logos/angular-icon.svg" pTooltip="Angular" tooltipPosition="bottom">
-                <img src="../../../assets/images/logos/bootstrap.svg" pTooltip="Bootstrap" tooltipPosition="bottom">
-                <img src="../../../assets/images/logos/primeng.png" pTooltip="PrimeNG" tooltipPosition="bottom">
+                <ng-container *ngFor="let tech of technology">
+                    <p-image *ngIf="tech.cla == 'frontend'" src={{tech.src}} pTooltip={{tech.tooltip}} tooltipPosition="bottom"></p-image>
+                </ng-container>
             </div>
             <p-divider align="center">
                 <h4 class="accent">Backend</h4>
             </p-divider>
             <div class="skill-items">
-                <img src="../../../assets/images/logos/php.svg" pTooltip="PHP" tooltipPosition="bottom">
-                <img src="../../../assets/images/logos/java.svg" pTooltip="Java" tooltipPosition="bottom">
-                <img src="../../../assets/images/logos/python.svg" pTooltip="Python" tooltipPosition="bottom">
-                <img src="../../../assets/images/logos/spring-icon.svg" pTooltip="Spring Framework" tooltipPosition="bottom">
-                <img src="../../../assets/images/logos/mysql-icon.svg" pTooltip="MySQL" tooltipPosition="bottom">
-                <img src="../../../assets/images/logos/sqlite.svg" pTooltip="SQLite" tooltipPosition="bottom">
+                <ng-container *ngFor="let tech of technology">
+                    <p-image *ngIf="tech.cla == 'backend'" src={{tech.src}} pTooltip={{tech.tooltip}} tooltipPosition="bottom"></p-image>
+                </ng-container>
             </div>
             <p-divider align="center">
                 <h4 class="accent">Tools</h4>
             </p-divider>
             <div class="skill-items">
-                <img src="../../../assets/images/logos/visual-studio-code.svg" pTooltip="Visual Studio Code" tooltipPosition="bottom">
-                <img src="../../../assets/images/logos/netbeans.svg" pTooltip="NetBeans" tooltipPosition="bottom">
-                <img src="../../../assets/images/logos/git.svg" pTooltip="Git" tooltipPosition="bottom">
-                <img src="../../../assets/images/logos/github-icon.svg" pTooltip="GitHub" tooltipPosition="bottom">
-                <img src="../../../assets/images/logos/xampp.svg" pTooltip="XAMPP" tooltipPosition="bottom">
-                <img src="../../../assets/images/logos/postman-icon.svg" pTooltip="Postman" tooltipPosition="bottom">
-                <img src="../../../assets/images/logos/figma.svg" pTooltip="Figma" tooltipPosition="bottom">
+                <ng-container *ngFor="let tech of technology">
+                    <p-image *ngIf="tech.cla == 'tools'" src={{tech.src}} pTooltip={{tech.tooltip}} tooltipPosition="bottom"></p-image>
+                </ng-container>
             </div>
         </p-fieldset>
     </div>

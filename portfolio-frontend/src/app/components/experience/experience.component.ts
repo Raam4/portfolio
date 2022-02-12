@@ -20,7 +20,7 @@ export class ExperienceComponent implements OnInit {
         description: 'I work in this company as a help desk, but I carry out various tasks related to IT; control of the status of servers,\
          backups, software and hardware maintenance, network maintenance, among others. Anyway, user support is my main task.\
          I currently work with four colleagues and a supervisor, and we are in charge of around 120 workstations and more than 10 physical\
-         servers, where we have even more virtual servers. I am continually learning a lot about IT maintenance, and how to work as\
+         servers, where we have even more virtual servers. I\'m continually learning a lot about IT maintenance, and how to work as\
          a team with my colleagues, especially when unexpected situations arise or we have to carry out large maintenance operations.',
         placeTime: 'City of Neuquén | June 2019 - Present'
       },
