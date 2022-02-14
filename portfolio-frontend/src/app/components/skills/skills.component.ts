@@ -55,7 +55,7 @@ export class SkillsComponent implements OnInit {
         cla: 'frontend'
       },
       {
-        src: 'assets/images/logos/typescript-logo.svg',
+        src: 'assets/images/logos/typescript-icon.svg',
         tooltip: 'TypeScript',
         cla: 'frontend'
       },
