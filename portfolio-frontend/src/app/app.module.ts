@@ -2,6 +2,8 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule } from '@angular/router';
+import { ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 import { ButtonModule } from 'primeng/button';
 import { MenubarModule } from 'primeng/menubar';
@@ -18,6 +20,8 @@ import { DividerModule } from 'primeng/divider';
 import { ChipModule } from 'primeng/chip';
 import { TooltipModule } from 'primeng/tooltip';
 
+import { ApiService } from './services/api.service';
+
 import { AppComponent } from './app.component';
 import { MenubarComponent } from './components/menubar/menubar.component';
 import { AboutComponent } from './components/about/about.component';
@@ -26,6 +30,7 @@ import { ExperienceComponent } from './components/experience/experience.componen
 import { EducationComponent } from './components/education/education.component';
 import { ProjectsComponent } from './components/projects/projects.component';
 import { SkillsComponent } from './components/skills/skills.component';
+import { LoginComponent } from './components/login/login.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +41,8 @@ import { SkillsComponent } from './components/skills/skills.component';
     ExperienceComponent,
     EducationComponent,
     ProjectsComponent,
-    SkillsComponent
+    SkillsComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
@@ -47,9 +53,12 @@ import { SkillsComponent } from './components/skills/skills.component';
       {path: 'education', component: EducationComponent},
       {path: 'projects', component: ProjectsComponent},
       {path: 'skills', component: SkillsComponent},
+      {path: 'login', component: LoginComponent},
       {path: '', redirectTo: '/home', pathMatch: 'full'},
       {path: '**', redirectTo: '/home'}
     ]),
+    HttpClientModule,
+    ReactiveFormsModule,
     BrowserAnimationsModule,
     ButtonModule,
     MenubarModule,
@@ -66,7 +75,11 @@ import { SkillsComponent } from './components/skills/skills.component';
     ChipModule,
     TooltipModule
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  providers: [
+    ApiService
+  ],
+  bootstrap: [
+    AppComponent
+  ]
 })
 export class AppModule { }
