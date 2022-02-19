@@ -9,6 +9,16 @@
             "mainClass": "com.raama.portfolio.PortfolioApplication",
             "projectName": "portfolio",
             "args": ""
+        },
+        {
+            "type": "java",
+            "name": "Spring Boot-PortfolioBackendApplication<portfolio-backend>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "console": "internalConsole",
+            "mainClass": "com.raama.portfoliobackend.PortfolioBackendApplication",
+            "projectName": "portfolio-backend",
+            "args": ""
         }
     ]
 }

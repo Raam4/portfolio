@@ -4,6 +4,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
 
 import { ButtonModule } from 'primeng/button';
 import { MenubarModule } from 'primeng/menubar';
@@ -19,6 +20,7 @@ import { GalleriaModule } from 'primeng/galleria';
 import { DividerModule } from 'primeng/divider';
 import { ChipModule } from 'primeng/chip';
 import { TooltipModule } from 'primeng/tooltip';
+import { InputTextModule } from 'primeng/inputtext';
 
 import { ApiService } from './services/api.service';
 
@@ -60,6 +62,7 @@ import { LoginComponent } from './components/login/login.component';
     HttpClientModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
+    FormsModule,
     ButtonModule,
     MenubarModule,
     TabViewModule,
@@ -73,7 +76,8 @@ import { LoginComponent } from './components/login/login.component';
     GalleriaModule,
     DividerModule,
     ChipModule,
-    TooltipModule
+    TooltipModule,
+    InputTextModule
   ],
   providers: [
     ApiService
