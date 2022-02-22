@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Person } from 'src/app/models/person';
+import { ApiService } from 'src/app/services/api.service';
 
 @Component({
   selector: 'app-home',
@@ -7,9 +9,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  constructor() { }
+  persons: Person[] = [];
+
+  constructor(private apiService: ApiService) { }
 
   ngOnInit(): void {
+    this.loadPerson();
+  }
+
+  loadPerson(): void{
+    this.apiService.listPerson().subscribe(
+      data => {
+        this.persons = data;
+      },
+      err => {
+        console.log(err);
+      }
+    );
   }
 
 }

@@ -1,11 +1,11 @@
 <section id="home">
     <div class="content">
         <h1 class="home-name">
-            Ramiro
-            <span class="accent">Cardozo</span>
+            {{persons[0].firstName}}
+            <span class="accent">{{persons[0].lastName}}</span>
         </h1>
         <div class="subheading">
-            <span class="accent">FullStack Developer</span> from Cipolletti, Rio Negro, Argentina.
+            <span class="accent">{{persons[0].title}}</span> from {{persons[0].location}}.
         </div>
     </div>
 </section>

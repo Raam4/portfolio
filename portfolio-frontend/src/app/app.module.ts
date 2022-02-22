@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { RouterModule } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
@@ -21,10 +20,13 @@ import { DividerModule } from 'primeng/divider';
 import { ChipModule } from 'primeng/chip';
 import { TooltipModule } from 'primeng/tooltip';
 import { InputTextModule } from 'primeng/inputtext';
+import {ToastModule} from 'primeng/toast';
 
 import { ApiService } from './services/api.service';
+import { interceptorProvider } from './services/interceptors/prod-interceptor.service';
 
 import { AppComponent } from './app.component';
+import { PortfolioComponent } from './components/portfolio/portfolio.component';
 import { MenubarComponent } from './components/menubar/menubar.component';
 import { AboutComponent } from './components/about/about.component';
 import { HomeComponent } from './components/home/home.component';
@@ -33,10 +35,12 @@ import { EducationComponent } from './components/education/education.component';
 import { ProjectsComponent } from './components/projects/projects.component';
 import { SkillsComponent } from './components/skills/skills.component';
 import { LoginComponent } from './components/login/login.component';
+import { AppRoutingModule } from './app-routing.module';
 
 @NgModule({
   declarations: [
     AppComponent,
+    PortfolioComponent,
     MenubarComponent,
     AboutComponent,
     HomeComponent,
@@ -48,17 +52,7 @@ import { LoginComponent } from './components/login/login.component';
   ],
   imports: [
     BrowserModule,
-    RouterModule.forRoot([
-      {path: 'home', component: HomeComponent},
-      {path: 'about', component: AboutComponent},
-      {path: 'experience', component: ExperienceComponent},
-      {path: 'education', component: EducationComponent},
-      {path: 'projects', component: ProjectsComponent},
-      {path: 'skills', component: SkillsComponent},
-      {path: 'login', component: LoginComponent},
-      {path: '', redirectTo: '/home', pathMatch: 'full'},
-      {path: '**', redirectTo: '/home'}
-    ]),
+    AppRoutingModule,
     HttpClientModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
@@ -77,10 +71,12 @@ import { LoginComponent } from './components/login/login.component';
     DividerModule,
     ChipModule,
     TooltipModule,
-    InputTextModule
+    InputTextModule,
+    ToastModule
   ],
   providers: [
-    ApiService
+    ApiService,
+    interceptorProvider
   ],
   bootstrap: [
     AppComponent
