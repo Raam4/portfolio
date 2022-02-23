@@ -28,4 +28,12 @@ public class Project {
     
     public Project(){}
 
+    public Project(String name, String techs, String picLoc, int dateYear, String link, String description) {
+        this.name = name;
+        this.techs = techs;
+        this.picLoc = picLoc;
+        this.dateYear = dateYear;
+        this.link = link;
+        this.description = description;
+    }
 }

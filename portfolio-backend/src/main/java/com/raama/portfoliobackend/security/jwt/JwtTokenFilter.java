@@ -36,7 +36,7 @@ public class JwtTokenFilter extends OncePerRequestFilter{
                 SecurityContextHolder.getContext().setAuthentication(auth);
             }
         }catch(Exception e){
-            logger.error("Error en el método doFilter");
+            logger.error("doFilter method error");
         }
         filterChain.doFilter(req, res);
     }

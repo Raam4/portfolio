@@ -25,4 +25,9 @@ public class Skill {
     
     public Skill(){}
 
+    public Skill(String name, String type, String icon) {
+        this.name = name;
+        this.type = type;
+        this.icon = icon;
+    }
 }

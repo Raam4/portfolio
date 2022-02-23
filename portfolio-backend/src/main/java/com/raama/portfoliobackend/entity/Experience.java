@@ -30,4 +30,13 @@ public class Experience {
     
     public Experience(){}
 
+    public Experience(String position, String company, String logoLoc, String location, Date dateStart, Date dateEnd, String description) {
+        this.position = position;
+        this.company = company;
+        this.logoLoc = logoLoc;
+        this.location = location;
+        this.dateStart = dateStart;
+        this.dateEnd = dateEnd;
+        this.description = description;
+    }
 }

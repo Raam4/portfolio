@@ -30,4 +30,13 @@ public class Education {
     
     public Education(){}
 
+    public Education(String title, String institution, String degree, String location, Date dateStart, Date dateEnd, String description) {
+        this.title = title;
+        this.institution = institution;
+        this.degree = degree;
+        this.location = location;
+        this.dateStart = dateStart;
+        this.dateEnd = dateEnd;
+        this.description = description;
+    }
 }
