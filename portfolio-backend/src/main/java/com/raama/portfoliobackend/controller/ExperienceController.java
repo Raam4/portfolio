@@ -57,7 +57,7 @@ public class ExperienceController {
             return new ResponseEntity(new Message("Description is mandatory."), HttpStatus.BAD_REQUEST);
         Experience experience = new Experience(experienceDto.getPosition(), experienceDto.getCompany(),
                 experienceDto.getLogoLoc(), experienceDto.getLocation(), experienceDto.getDateStart(),
-                experienceDto.getDateEnd(), experienceDto.getDescription());
+                experienceDto.getDateEnd(), experienceDto.getDescription(), experienceDto.getPerson());
         experienceService.save(experience);
         return new ResponseEntity(new Message("Experience created."), HttpStatus.OK);
     }
@@ -85,6 +85,7 @@ public class ExperienceController {
         experience.setDateStart(experienceDto.getDateStart());
         experience.setDateEnd(experienceDto.getDateEnd());
         experience.setDescription(experienceDto.getDescription());
+        experience.setPerson(experienceDto.getPerson());
         experienceService.save(experience);
         return new ResponseEntity(new Message("Experience updated."), HttpStatus.OK);
     }

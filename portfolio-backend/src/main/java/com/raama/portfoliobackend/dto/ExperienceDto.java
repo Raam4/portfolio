@@ -1,5 +1,6 @@
 package com.raama.portfoliobackend.dto;
 
+import com.raama.portfoliobackend.entity.Person;
 import java.sql.Date;
 import javax.validation.constraints.NotBlank;
 import lombok.Getter;
@@ -20,12 +21,13 @@ public class ExperienceDto {
     private Date dateEnd;
     @NotBlank
     private String description;
+    private Person person;
 
     public ExperienceDto() {
     }
 
     public ExperienceDto(@NotBlank String position, @NotBlank String company, String logoLoc,
-            @NotBlank String location, @NotBlank Date dateStart, Date dateEnd, @NotBlank String description) {
+            @NotBlank String location, @NotBlank Date dateStart, Date dateEnd, @NotBlank String description, Person person) {
         this.position = position;
         this.company = company;
         this.logoLoc = logoLoc;
@@ -33,5 +35,6 @@ public class ExperienceDto {
         this.dateStart = dateStart;
         this.dateEnd = dateEnd;
         this.description = description;
+        this.person = person;
     }
 }

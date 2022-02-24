@@ -1,4 +1,6 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Education } from 'src/app/models/education';
+import { ApiService } from 'src/app/services/api.service';
 
 @Component({
   selector: 'app-education',
@@ -7,10 +9,28 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
   encapsulation: ViewEncapsulation.None
 })
 export class EducationComponent implements OnInit {
-  titles:any = [];
-  constructor() { }
+
+  titles:Education[] = [];
+
+  constructor(private apiService:ApiService) { }
 
   ngOnInit(): void {
+    this.loadEducation();
+  }
+
+  loadEducation(): void{
+    this.apiService.listEducation().subscribe(
+      data => {
+        this.titles = data;
+      },
+      err => {
+        console.log(err);
+      }
+    );
+  }
+
+
+    /*
     this.titles = [
       {
         level: 'University',
@@ -60,5 +80,5 @@ export class EducationComponent implements OnInit {
          Some of this knowledge helped me open my own business, keeping its accounting and taxes up to date.'
       }
     ];
-  }
+    */
 }

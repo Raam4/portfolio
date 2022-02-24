@@ -1,4 +1,6 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Experience } from 'src/app/models/experience';
+import { ApiService } from 'src/app/services/api.service';
 
 @Component({
   selector: 'app-experience',
@@ -7,11 +9,27 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
   encapsulation: ViewEncapsulation.None
 })
 export class ExperienceComponent implements OnInit {
-  jobs:any[] = [];
-  constructor() { }
+
+  jobs: Experience[] = [];
+
+  constructor(private apiService:ApiService) { }
 
   ngOnInit(): void {
-    this.jobs = [
+    this.loadExperience();
+  }
+
+  loadExperience(): void{
+    this.apiService.listExperience().subscribe(
+      data => {
+        this.jobs = data;
+      },
+      err => {
+        console.log(err);
+      }
+    );
+  }
+
+    /*this.jobs = [
       {
         place: 'Casa Ferracioli S.A.',
         logo: 'assets/images/logos/ferracioli-logo.gif',
@@ -35,7 +53,6 @@ export class ExperienceComponent implements OnInit {
          I still manage the store to this day, but I don\'t work on site.',
         placeTime: 'City of Neuquén | December 2017 - Present'
       }
-    ];
-  }
+    ];*/
 
 }

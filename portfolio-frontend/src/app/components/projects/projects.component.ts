@@ -1,4 +1,6 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Project } from 'src/app/models/project';
+import { ApiService } from 'src/app/services/api.service';
 
 @Component({
   selector: 'app-projects',
@@ -7,10 +9,27 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
   encapsulation: ViewEncapsulation.None
 })
 export class ProjectsComponent implements OnInit {
-  projects:any[] = [];
-  constructor() { }
+  
+  projects:Project[] = [];
+  
+  constructor(private apiService:ApiService) { }
 
   ngOnInit(): void {
+    this.loadProject();
+  }
+
+  loadProject(): void{
+    this.apiService.listProject().subscribe(
+      data => {
+        this.projects = data;
+      },
+      err => {
+        console.log(err);
+      }
+    );
+  }
+
+    /*
     this.projects = [
       {
         title: 'TOC TOC Drinks Delivery',
@@ -49,6 +68,5 @@ export class ProjectsComponent implements OnInit {
         link: 'https://github.com/Raam4/jcn'
       }
     ];
-  }
-
+    */
 }

@@ -30,7 +30,7 @@ public class Experience {
     
     public Experience(){}
 
-    public Experience(String position, String company, String logoLoc, String location, Date dateStart, Date dateEnd, String description) {
+    public Experience(String position, String company, String logoLoc, String location, Date dateStart, Date dateEnd, String description, Person person) {
         this.position = position;
         this.company = company;
         this.logoLoc = logoLoc;
@@ -38,5 +38,6 @@ public class Experience {
         this.dateStart = dateStart;
         this.dateEnd = dateEnd;
         this.description = description;
+        this.person = person;
     }
 }

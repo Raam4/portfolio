@@ -1,4 +1,5 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { ApiService } from 'src/app/services/api.service';
 
 @Component({
   selector: 'app-skills',
@@ -7,10 +8,27 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
   encapsulation: ViewEncapsulation.None
 })
 export class SkillsComponent implements OnInit {
-  sskills:any[]=[];
-  technology:any[]=[];
-  constructor() { }
 
+  skills:any[]=[];
+
+  constructor(private apiService:ApiService) { }
+
+  ngOnInit(): void {
+    this.loadSkill();
+  }
+
+  loadSkill(): void{
+    this.apiService.listSkill().subscribe(
+      data => {
+        this.skills = data;
+      },
+      err => {
+        console.log(err);
+      }
+    );
+  }
+}
+/*
   ngOnInit(): void {
     this.sskills = [
       {
@@ -143,3 +161,4 @@ export class SkillsComponent implements OnInit {
   }
 
 }
+*/

@@ -20,9 +20,9 @@ const routes: Routes = [
     children:[
       {path: 'home', component: HomeComponent},
       {path: 'about', component: AboutComponent},
-      {path: 'experience', component: ExperienceComponent, canActivate: [PersGuardService], data: { expectedRole: ['admin']}},
-      {path: 'education', component: EducationComponent, canActivate: [PersGuardService], data: { expectedRole: ['admin', 'user']}},
-      {path: 'projects', component: ProjectsComponent, canActivate: [PersGuardService], data: { expectedRole: ['admin', 'user']}},
+      {path: 'experience', component: ExperienceComponent},
+      {path: 'education', component: EducationComponent},
+      {path: 'projects', component: ProjectsComponent},
       {path: 'skills', component: SkillsComponent},
       {path: '', redirectTo: 'home', pathMatch: 'full'},
       {path: '**', redirectTo: 'home'}

@@ -5,14 +5,14 @@
             <div id="gal-content">
                 <p-galleria [value]="projects" [showIndicators]="true" [showThumbnails]="false" [containerStyle]="{'max-width': '650px'}" [circular]="true" [autoPlay]="true" [transitionInterval]="10000">
                     <ng-template pTemplate="item" let-item>
-                        <p-card header={{item.title}} subheader={{item.technologies}}>
+                        <p-card header={{item.name}} subheader={{item.techs}}>
                             <ng-template pTemplate="header">
-                                <p-image src={{item.img}} width="400px" height="300px"></p-image>
+                                <p-image src={{item.picLoc}} width="400px" height="300px"></p-image>
                             </ng-template>
                             <p>{{item.description}}</p>
                             <a href={{item.link}} class="pro-link"><p-chip label="Go to project" styleClass="custom-chip"></p-chip></a>
                             <ng-template pTemplate="footer">
-                                <span class="accent">{{item.date}}</span>
+                                <span class="accent">{{item.dateYear}}</span>
                             </ng-template>
                         </p-card>
                     </ng-template>

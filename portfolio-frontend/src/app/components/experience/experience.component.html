@@ -4,12 +4,15 @@
             <ng-template pTemplate="header"><h1 class="accent fieldset-header">Experience</h1></ng-template>
             <p-panel styleClass="exp-panel" *ngFor="let job of jobs">
                 <ng-template pTemplate="header">
-                    <h2 class="exp-panel-header accent">{{job.place}}</h2><img src={{job.logo}} class={{job.logoClass}}>
+                    <h2 class="exp-panel-header accent">{{job.company}}</h2><img *ngIf="job.logoLoc != null" src={{job.logoLoc}}>
                 </ng-template>
                 <span class="position">{{job.position}}</span>
                 <p>{{job.description}}</p>
                 <ng-template pTemplate="footer">
-                    <span class="accent">{{job.placeTime}}</span>
+                    <span class="accent">{{job.location}} | {{job.dateStart}}</span>
+                    <div *ngIf="job.dateEnd != null; then dateEnd else present"></div>
+                    <ng-template #dateEnd><span class="accent"> - {{job.dateEnd}}</span></ng-template>
+                    <ng-template #present><span class="accent"> - Present</span></ng-template>
                 </ng-template>
             </p-panel>
         </p-fieldset>
