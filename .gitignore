@@ -44,7 +44,3 @@ testem.log
 # System Files
 .DS_Store
 Thumbs.db
-/nbproject/private/
-
-# Local Netlify folder
-.netlify
