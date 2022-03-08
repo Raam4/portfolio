@@ -10,7 +10,6 @@ import { ProjectsComponent } from './components/projects/projects.component';
 import { SkillsComponent } from './components/skills/skills.component';
 import { LoginComponent } from './components/login/login.component';
 
-import { PersGuardService } from './services/guards/pers-guard.service';
 import { LoginGuard } from './services/guards/login.guard';
 
 const routes: Routes = [

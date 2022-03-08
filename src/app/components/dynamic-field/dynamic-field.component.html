@@ -1,0 +1,22 @@
+<div [formGroup]="form" class="field col-12">
+  <label [attr.for]="field.key">{{field.label}}</label>
+  <ng-container [ngSwitch]="field.controlType">
+
+    <input *ngSwitchCase="'text'" class="inputfield w-full" [formControlName]="field.key" [id]="field.key"
+    [attr.aria-described-by]="field.key+'-help'" [type]="field.type" pInputText>
+
+    <p-inputNumber *ngSwitchCase="'number'" class="inputfield w-full" [formControlName]="field.key" [id]="field.key"
+    [attr.aria-described-by]="field.key+'-help'"></p-inputNumber>
+
+    <textarea *ngSwitchCase="'textbox'" class="inputfield w-full" [formControlName]="field.key" [id]="field.key"
+    [attr.aria-described-by]="field.key+'-help'" style="resize:none; width:200%; height: 150px;" pInputTextarea></textarea>
+
+    <p-calendar *ngSwitchCase="'date'" class="inputfield w-full" [formControlName]="field.key" [id]="field.key"
+    view="month" dateFormat="mm/yy" [attr.aria-described-by]="field.key+'-help'"></p-calendar>
+
+    <label *ngSwitchDefault>No control type detected</label>
+
+    <small [id]="field.key+'-help'" class="p-error" *ngIf="isDirty && !isValid">{{field.label}} is required</small>
+
+  </ng-container>
+</div>

@@ -1,11 +1,12 @@
 <section id="home">
     <div class="content">
         <h1 class="home-name">
-            {{persons[0].firstName}}
-            <span class="accent">{{persons[0].lastName}}</span>
+            {{person.firstName}}
+            <span class="accent">{{person.lastName}}</span>
         </h1>
         <div class="subheading">
-            <span class="accent">{{persons[0].title}}</span> from {{persons[0].location}}.
+            <span class="accent">{{person.title}}</span> from {{person.location}}.
+            <p-button type="button" icon="pi pi-pencil" (click)="show()"></p-button>
         </div>
     </div>
 </section>

@@ -1,9 +1,8 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-import { FormsModule } from '@angular/forms';
 
 import { ButtonModule } from 'primeng/button';
 import { MenubarModule } from 'primeng/menubar';
@@ -20,10 +19,14 @@ import { DividerModule } from 'primeng/divider';
 import { ChipModule } from 'primeng/chip';
 import { TooltipModule } from 'primeng/tooltip';
 import { InputTextModule } from 'primeng/inputtext';
-import {ToastModule} from 'primeng/toast';
+import { ToastModule } from 'primeng/toast';
+import { DynamicDialogModule } from 'primeng/dynamicdialog';
+import { InputTextareaModule } from 'primeng/inputtextarea';
+import { InputNumberModule } from 'primeng/inputnumber';
+import { CalendarModule } from 'primeng/calendar';
 
 import { ApiService } from './services/api.service';
-import { interceptorProvider } from './services/interceptors/prod-interceptor.service';
+import { interceptorProvider } from './services/interceptors/pers-interceptor.service';
 
 import { AppComponent } from './app.component';
 import { PortfolioComponent } from './components/portfolio/portfolio.component';
@@ -35,7 +38,11 @@ import { EducationComponent } from './components/education/education.component';
 import { ProjectsComponent } from './components/projects/projects.component';
 import { SkillsComponent } from './components/skills/skills.component';
 import { LoginComponent } from './components/login/login.component';
+import { DynamicFieldComponent } from './components/dynamic-field/dynamic-field.component';
+import { DynamicFormComponent } from './components/dynamic-form/dynamic-form.component';
 import { AppRoutingModule } from './app-routing.module';
+
+import { homeForm } from './components/home/homeForm';
 
 @NgModule({
   declarations: [
@@ -48,7 +55,10 @@ import { AppRoutingModule } from './app-routing.module';
     EducationComponent,
     ProjectsComponent,
     SkillsComponent,
-    LoginComponent
+    LoginComponent,
+    homeForm,
+    DynamicFieldComponent,
+    DynamicFormComponent
   ],
   imports: [
     BrowserModule,
@@ -72,7 +82,11 @@ import { AppRoutingModule } from './app-routing.module';
     ChipModule,
     TooltipModule,
     InputTextModule,
-    ToastModule
+    InputTextareaModule,
+    ToastModule,
+    DynamicDialogModule,
+    InputNumberModule,
+    CalendarModule
   ],
   providers: [
     ApiService,

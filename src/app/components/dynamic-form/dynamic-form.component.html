@@ -1,0 +1,13 @@
+<div class="formgrid grid">
+    <form (ngSubmit)="onSubmit()" [formGroup]="form">
+      <ng-container *ngFor="let field of fields">
+        <app-dynamic-field [field]="field" [form]="form"></app-dynamic-field>
+      </ng-container>
+      <div class="col-12 flex justify-content-end">
+        <p-button type="submit" label="Save" icon="pi pi-save" [disabled]="!form.valid"></p-button>
+      </div>
+    </form>
+    <div *ngIf="payLoad">
+      <strong>Saved the following values</strong><br>{{payLoad}}
+    </div>
+  </div>

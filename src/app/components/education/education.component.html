@@ -6,12 +6,14 @@
                 <ng-template pTemplate="content" let-title>
                     <p-card [header]="title.title" [subheader]="title.degree" [style]="{'min-width':'250px'}">
                         <span class="accent">{{title.institution}}</span>
-                        <span>{{title.location}}</span>
                         <p>{{title.description}}</p>
-                        <span class="accent">{{title.dateStart}}</span>
+                        <span class="accent">
+                            {{title.location}} / 
+                            {{title.dateStart}}
                         <div *ngIf="title.dateEnd != null; then dateEnd else present"></div>
-                        <ng-template #dateEnd><span class="accent"> - {{title.dateEnd}}</span></ng-template>
-                        <ng-template #present><span class="accent"> - Present</span></ng-template>
+                        <ng-template #dateEnd> to {{title.dateEnd}}</ng-template>
+                        <ng-template #present> to Present</ng-template>
+                        </span>
                     </p-card>
                 </ng-template>
             </p-timeline>
