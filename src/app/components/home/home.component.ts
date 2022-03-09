@@ -32,8 +32,10 @@ export class HomeComponent implements OnInit {
           fields: this.fields$,
         },
         header: 'Edit personal info',
-        width: '40%',
-        contentStyle: {"display":"flex", "justify-content":"center"}
+        contentStyle: {
+          "display":"flex",
+          "justify-content":"center"
+        }
     });
   }
 

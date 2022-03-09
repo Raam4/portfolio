@@ -5,8 +5,7 @@ import { BaseField } from '../../models/forms/base-field';
 
 @Component({
   selector: 'app-dynamic-field',
-  templateUrl: './dynamic-field.component.html',
-  styleUrls: ['./dynamic-field.component.css']
+  templateUrl: './dynamic-field.component.html'
 })
 export class DynamicFieldComponent {
   @Input() field!: BaseField<string>;

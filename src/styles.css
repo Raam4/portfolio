@@ -53,3 +53,15 @@ section{
 .accent{
   color: var(--primary-color);
 }
+.p-dynamic-dialog{
+  width: 80%;
+  height: auto;
+}
+@media (min-width: 960px) {
+  .p-dynamic-dialog{
+    width: 40%;
+  }
+}
+.p-dialog-content > .ng-star-inserted{
+  width: 85%;
+}
