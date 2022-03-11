@@ -1,6 +1,11 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { Experience } from 'src/app/models/experience';
 import { ApiService } from 'src/app/services/api.service';
+import { ExperienceForm } from './experience-form.component';
+import { DialogService } from 'primeng/dynamicdialog';
+import { ExperienceFormService } from 'src/app/services/forms/experience-form.service';
+import { Observable } from 'rxjs';
+import { BaseField } from 'src/app/models/forms/base-field';
 
 @Component({
   selector: 'app-experience',
@@ -10,21 +15,33 @@ import { ApiService } from 'src/app/services/api.service';
 })
 export class ExperienceComponent implements OnInit {
 
+  fields$: Observable<BaseField<any>[]>;
+
   jobs: Experience[] = [];
 
-  constructor(private apiService:ApiService) { }
+  constructor(private apiService:ApiService, public dialogService: DialogService, private fServ: ExperienceFormService) { }
 
   ngOnInit(): void {
     this.loadExperience();
+  }
+
+  show() {
+    const ref = this.dialogService.open(ExperienceForm, {
+        data: {
+          fields: this.fields$,
+        },
+        header: 'Edit experience info',
+        contentStyle: {
+          "display":"flex",
+          "justify-content":"center"
+        }
+    });
   }
 
   loadExperience(): void{
     this.apiService.listExperience().subscribe(
       data => {
         this.jobs = data;
-      },
-      err => {
-        console.log(err);
       }
     );
   }

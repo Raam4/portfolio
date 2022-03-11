@@ -1,8 +1,8 @@
-<ng-container [formGroup]="form">
-    <label [attr.for]="field.key" *ngIf="field.key != 'id'">{{field.label}}</label>
+<ng-container [formGroup]="form" *ngIf="field.key != 'id' && field.key != 'table'">
+    <label [attr.for]="field.key">{{field.label}}</label>
     <ng-container [ngSwitch]="field.controlType">
       
-      <p-inputNumber *ngSwitchCase="'number' && field.key != 'id'"  class="inputfield w-full" [formControlName]="field.key" [id]="field.key"
+      <p-inputNumber *ngSwitchCase="'number'" class="inputfield w-full" [formControlName]="field.key" [id]="field.key"
       [attr.aria-described-by]="field.key+'-help'"></p-inputNumber>
       
       <input *ngSwitchCase="'text'" class="inputfield w-full" [formControlName]="field.key" [id]="field.key"

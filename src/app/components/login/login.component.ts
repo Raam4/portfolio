@@ -14,15 +14,15 @@ import { MessageService } from 'primeng/api';
 })
 export class LoginComponent implements OnInit {
 
-  loginUser: LoginUser = new LoginUser('', '');
-  username: string = '';
-  password: string = '';
-  errmsg: string = '';
+  loginUser: LoginUser;
+  username: string;
+  password: string;
+  errmsg: string;
 
-  newUser: NewUser = new NewUser('', '', '');
-  email: string = '';
-  newUsername: string = '';
-  newPassword: string = '';
+  newUser: NewUser;
+  email: string;
+  newUsername: string;
+  newPassword: string;
 
   constructor(
     private tokenService: TokenService,
@@ -39,10 +39,6 @@ export class LoginComponent implements OnInit {
       data => {
         this.tokenService.setToken(data.token);
         this.router.navigate(['/portfolio/home']);
-      },
-      err => {
-        this.errmsg = err.error.message;
-        this.messageService.add({severity:'error', summary: 'Failed to login', detail: this.errmsg});
       }
     )
   }
@@ -52,10 +48,6 @@ export class LoginComponent implements OnInit {
     this.authService.newUs(this.newUser).subscribe(
       data => {
         this.messageService.add({severity:'success', summary: 'Register complete!', detail: 'You can now login.'});
-      },
-      err => {
-        this.errmsg = err.error.message;
-        this.messageService.add({severity:'error', summary: 'Failed to register', detail: this.errmsg});
       }
     );
   }

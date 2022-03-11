@@ -27,15 +27,15 @@
                         <form #reg="ngForm" (ngSubmit)="onRegister()" novalidate>
                             <div class="field">
                                 <label for="email">Email</label>
-                                <input pInputText id="email" type="email">
+                                <input pInputText id="email" name="email" type="email" [(ngModel)]="email">
                             </div>
                             <div class="field">
                                 <label for="newUsername">Username</label>
-                                <input pInputText id="newUsername" />
+                                <input pInputText id="newUsername" name="newUsername" [(ngModel)]="newUsername" />
                             </div>
                             <div class="field">
                                 <label for="newPassword">Password</label>
-                                <input pInputText id="newPassword" type="password" />
+                                <input pInputText id="newPassword" name="newPassword" type="password" [(ngModel)]="newPassword" />
                             </div>
                             <div class="field">
                                 <label for="confirmPassword">Confirm Password</label>

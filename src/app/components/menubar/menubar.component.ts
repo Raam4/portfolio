@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewEncapsulation} from '@angular/core';
 import { TokenService } from '../../services/token.service';
 import { MenuItem } from 'primeng/api';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-menubar',
@@ -15,7 +16,7 @@ export class MenubarComponent implements OnInit {
   isLogged = false;
   isAdmin = false;
 
-  constructor(private tokenService: TokenService){}
+  constructor(private tokenService: TokenService, private router: Router){}
 
   ngOnInit(): void {
 
@@ -48,5 +49,6 @@ export class MenubarComponent implements OnInit {
 
   logOut(): void{
     this.tokenService.logOut();
+    this.isLogged = this.tokenService.isLogged();
   }
 }

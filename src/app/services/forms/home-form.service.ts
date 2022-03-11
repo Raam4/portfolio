@@ -7,18 +7,26 @@ import { Person } from 'src/app/models/person';
 import { NumberField } from 'src/app/models/forms/number-field';
 
 @Injectable()
-export class PersonFormService {
-  constructor() { }
+export class HomeFormService {
 
+  constructor() { }
+  
   public getPersonForm(person:Person): Observable<BaseField<any>[]>{
+
     const fields: BaseField<string | number>[] = [
+
+      new TextField({
+        key: 'table',
+        value: 'person',
+        required: false,
+        order: 5
+      }),
 
       new NumberField({
         key: 'id',
-        label: 'id',
         value: person.id,
-        disabled: true,
-        required: false
+        required: false,
+        order: 4
       }),
 
       new TextField({

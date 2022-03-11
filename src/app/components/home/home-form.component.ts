@@ -5,10 +5,10 @@ import { FormGroup } from '@angular/forms';
 import { Observable } from 'rxjs';
 
 @Component({
-    selector: 'app-homeform',
+    selector: 'app-home-form',
     template: `<app-dynamic-form [fields]="fields$ | async"></app-dynamic-form>`
 })
-export class homeForm {
+export class HomeForm {
     @Input() field!: BaseField<string>;
     @Input() form!: FormGroup;
     fields$: Observable<BaseField<any>[]>;

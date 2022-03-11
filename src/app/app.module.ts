@@ -7,7 +7,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { ButtonModule } from 'primeng/button';
 import { MenubarModule } from 'primeng/menubar';
 import { TabViewModule } from 'primeng/tabview';
-import { SharedModule } from 'primeng/api';
+import { MessageService, SharedModule } from 'primeng/api';
 import { ImageModule } from 'primeng/image';
 import { FieldsetModule } from 'primeng/fieldset';
 import { ScrollTopModule } from 'primeng/scrolltop';
@@ -20,7 +20,7 @@ import { ChipModule } from 'primeng/chip';
 import { TooltipModule } from 'primeng/tooltip';
 import { InputTextModule } from 'primeng/inputtext';
 import { ToastModule } from 'primeng/toast';
-import { DynamicDialogModule } from 'primeng/dynamicdialog';
+import { DialogService, DynamicDialogModule } from 'primeng/dynamicdialog';
 import { InputTextareaModule } from 'primeng/inputtextarea';
 import { InputNumberModule } from 'primeng/inputnumber';
 import { CalendarModule } from 'primeng/calendar';
@@ -42,7 +42,10 @@ import { DynamicFieldComponent } from './components/dynamic-field/dynamic-field.
 import { DynamicFormComponent } from './components/dynamic-form/dynamic-form.component';
 import { AppRoutingModule } from './app-routing.module';
 
-import { homeForm } from './components/home/homeForm';
+import { HomeForm } from './components/home/home-form.component';
+import { ExperienceForm } from './components/experience/experience-form.component';
+import { AuthService } from './services/auth.service';
+import { TokenService } from './services/token.service';
 
 @NgModule({
   declarations: [
@@ -56,7 +59,8 @@ import { homeForm } from './components/home/homeForm';
     ProjectsComponent,
     SkillsComponent,
     LoginComponent,
-    homeForm,
+    HomeForm,
+    ExperienceForm,
     DynamicFieldComponent,
     DynamicFormComponent
   ],
@@ -90,7 +94,11 @@ import { homeForm } from './components/home/homeForm';
   ],
   providers: [
     ApiService,
-    interceptorProvider
+    interceptorProvider,
+    MessageService,
+    DialogService,
+    AuthService,
+    TokenService
   ],
   bootstrap: [
     AppComponent

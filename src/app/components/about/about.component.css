@@ -1,9 +1,9 @@
-#about{
+section#about{
     background: url('../../../assets/images/notebook.jpg') center;
     background-size: cover;
 }
 @media (min-width: 960px) {
-    #about{
+    section#about{
         background-attachment: fixed;
     }
 }

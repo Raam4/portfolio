@@ -29,8 +29,8 @@ export class ApiService {
     return this.httpClient.post<any>(this.apiUrl + 'person/create', person);
   }
 
-  public updatePerson(id:number, person: Person): Observable<any>{
-    return this.httpClient.put<any>(this.apiUrl + `person/update/${id}`, person);
+  public updatePerson(id:number, body: any): Observable<any>{
+    return this.httpClient.put<any>(this.apiUrl + `person/update/${id}`, body);
   }
 
   public deletePerson(id: number): Observable<any>{
