@@ -4,6 +4,9 @@ import { ApiService } from 'src/app/services/api.service';
 import { FormControlService } from 'src/app/services/forms/form-control.service';
 import { BaseField } from '../../models/forms/base-field';
 import { MessageService } from 'primeng/api';
+import { Router } from '@angular/router';
+import { TokenService } from 'src/app/services/token.service';
+import { DynamicDialogRef } from 'primeng/dynamicdialog';
 
 @Component({
   selector: 'app-dynamic-form',
@@ -16,24 +19,64 @@ export class DynamicFormComponent implements OnInit {
   form!: FormGroup;
   payLoad = '';
 
-  constructor(private qcs: FormControlService, private apiService: ApiService, private messageService: MessageService) {}
+  constructor(
+    private qcs: FormControlService,
+    private apiService: ApiService,
+    private messageService: MessageService,
+    private router: Router,
+    private ref: DynamicDialogRef,
+    private tokenService: TokenService
+    ) {}
 
   ngOnInit() {
     this.form = this.qcs.toFormGroup(this.fields as BaseField<string>[]);
   }
 
   onSubmit() {
-    const data = this.form;
-    this.payLoad = JSON.stringify(this.form.getRawValue());
-    console.log(data.value.table);
-    if(data.value.table == 'person'){
-      let body = {title: data.value.title, location: data.value.location, about: data.value.about};
-      console.log(data.value.id)
-      this.apiService.updatePerson(data.value.id, body).subscribe(
-        data => {
-          this.messageService.add({severity:'success', summary:'Saved', detail:'Personal info saved'});
-        }
-      );
+    const data = this.form.value;
+    let id;
+    let flag;
+    if(data.id != undefined){
+      flag = true;
+      id = data.id;
+      delete data.id;
     }
+    const table = data.table;
+    delete data.table;
+    if(!(this.isLogged())){
+      this.messageService.add({severity:'error', summary:'Expirated', detail:'Session expirated, please login again.'});
+    }else{
+      switch(table){
+        case 'person': {
+          this.apiService.updatePerson(id, data).subscribe( info => { this.toast(table) } );
+          break;
+        }
+        case 'experience': {
+          if(flag){
+            this.apiService.updateExperience(id, data).subscribe( info => { this.toast(table) } );
+          }else{
+            this.apiService.saveExperience(data).subscribe( info => { this.toast(table) } );
+          }
+          break;
+        }
+      }
+    }
+
+  }
+
+  toast(table:any){
+    this.messageService.add({severity:'success', summary: table+' info saved', detail: 'Wait or close this toast to reload.', life: 3000});
+    this.form.disable();
+  }
+
+  onClose(){
+    this.ref.close();
+    this.router.routeReuseStrategy.shouldReuseRoute = () => false;
+    this.router.onSameUrlNavigation = 'reload';
+    this.router.navigate([this.router.url]);
+  }
+
+  isLogged(){
+    return this.tokenService.isLogged();
   }
 }

@@ -4,8 +4,11 @@ import { ApiService } from 'src/app/services/api.service';
 import { ExperienceForm } from './experience-form.component';
 import { DialogService } from 'primeng/dynamicdialog';
 import { ExperienceFormService } from 'src/app/services/forms/experience-form.service';
-import { Observable } from 'rxjs';
+import { Observable, tap } from 'rxjs';
 import { BaseField } from 'src/app/models/forms/base-field';
+import { TokenService } from 'src/app/services/token.service';
+import { MessageService } from 'primeng/api';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-experience',
@@ -15,20 +18,28 @@ import { BaseField } from 'src/app/models/forms/base-field';
 })
 export class ExperienceComponent implements OnInit {
 
-  fields$: Observable<BaseField<any>[]>;
+  $fields: Observable<BaseField<any>[]>;
 
-  jobs: Experience[] = [];
+  $exp: Observable<Experience[]>;
 
-  constructor(private apiService:ApiService, public dialogService: DialogService, private fServ: ExperienceFormService) { }
+  constructor(
+    private apiService: ApiService,
+    public dialogService: DialogService,
+    private fServ: ExperienceFormService,
+    private tokenService: TokenService,
+    private messageService: MessageService,
+    private router: Router
+  ) { }
 
   ngOnInit(): void {
     this.loadExperience();
   }
 
-  show() {
+  editInfo(experience: Experience) {
+    this.$fields = this.fServ.getExperienceForm(experience);
     const ref = this.dialogService.open(ExperienceForm, {
         data: {
-          fields: this.fields$,
+          fields: this.$fields
         },
         header: 'Edit experience info',
         contentStyle: {
@@ -38,38 +49,46 @@ export class ExperienceComponent implements OnInit {
     });
   }
 
-  loadExperience(): void{
-    this.apiService.listExperience().subscribe(
+  newExperience(){
+    this.$fields = this.fServ.getExperienceForm(null);
+    const ref = this.dialogService.open(ExperienceForm, {
+      data: {
+        fields: this.$fields
+      },
+      header: 'Add new experience item',
+      contentStyle: {
+        "display":"flex",
+        "justify-content":"center"
+      }
+    });
+  }
+
+  loadExperience(){
+    this.$exp = this.apiService.listExperience().pipe(
+      tap(data => {
+        data.sort((a, b) => 
+          new Date(b.dateStart).getTime() - new Date(a.dateStart).getTime()
+        );
+      })
+    );
+  }
+
+  deleteExperience(id: any){
+    this.apiService.deleteExperience(id).subscribe(
       data => {
-        this.jobs = data;
+        this.messageService.add({id: 'xp', severity:'warn', summary: data.message, detail: 'Wait or close this toast to reload.', life: 3000});
       }
     );
   }
 
-    /*this.jobs = [
-      {
-        place: 'Casa Ferracioli S.A.',
-        logo: 'assets/images/logos/ferracioli-logo.gif',
-        logoClass: 'ferracioli-logo',
-        position: 'Employee',
-        description: 'I work in this company as a help desk, but I carry out various tasks related to IT; control of the status of servers,\
-         backups, software and hardware maintenance, network maintenance, among others. Anyway, user support is my main task.\
-         I currently work with four colleagues and a supervisor, and we are in charge of around 120 workstations and more than 10 physical\
-         servers, where we have even more virtual servers. I\'m continually learning a lot about IT maintenance, and how to work as\
-         a team with my colleagues, especially when unexpected situations arise or we have to carry out large maintenance operations.',
-        placeTime: 'City of Neuquén | June 2019 - Present'
-      },
-      {
-        place: 'Betel Tu Estilo Neuquén',
-        logo: 'assets/images/logos/betel-logo.jpg',
-        logoClass: 'betel-logo',
-        position: 'Owner',
-        description: 'Clothing store that I opened with the help of my parents. I served the public in it for a year\
-         and a half, while I did the accounting, finances and taxes. I learned a lot about how to open, maintain and\
-         take care of a business. I also learned how to treat customers and how to sell a product to them.\
-         I still manage the store to this day, but I don\'t work on site.',
-        placeTime: 'City of Neuquén | December 2017 - Present'
-      }
-    ];*/
+  toastClose(){
+    this.router.routeReuseStrategy.shouldReuseRoute = () => false;
+    this.router.onSameUrlNavigation = 'reload';
+    this.router.navigate([this.router.url]);
+  }
+
+  isLogged(){
+    return this.tokenService.isLogged();
+  }
 
 }

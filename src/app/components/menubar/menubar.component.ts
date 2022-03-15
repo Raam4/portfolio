@@ -16,7 +16,7 @@ export class MenubarComponent implements OnInit {
   isLogged = false;
   isAdmin = false;
 
-  constructor(private tokenService: TokenService, private router: Router){}
+  constructor(private tokenService: TokenService){}
 
   ngOnInit(): void {
 

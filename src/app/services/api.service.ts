@@ -49,8 +49,8 @@ export class ApiService {
     return this.httpClient.post<any>(this.apiUrl + 'experience/create', experience);
   }
 
-  public updateExperience(id:number, experience: Experience): Observable<any>{
-    return this.httpClient.put<any>(this.apiUrl + `experience/update/${id}`, experience);
+  public updateExperience(id:number, body: any): Observable<any>{
+    return this.httpClient.put<any>(this.apiUrl + `experience/update/${id}`, body);
   }
 
   public deleteExperience(id: number): Observable<any>{
@@ -69,8 +69,8 @@ export class ApiService {
     return this.httpClient.post<any>(this.apiUrl + 'education/create', education);
   }
 
-  public updateEducation(id:number, education: Education): Observable<any>{
-    return this.httpClient.put<any>(this.apiUrl + `education/update/${id}`, education);
+  public updateEducation(id:number, body: any): Observable<any>{
+    return this.httpClient.put<any>(this.apiUrl + `education/update/${id}`, body);
   }
 
   public deleteEducation(id: number): Observable<any>{
@@ -89,8 +89,8 @@ export class ApiService {
     return this.httpClient.post<any>(this.apiUrl + 'project/create', project);
   }
 
-  public updateProject(id:number, project: Project): Observable<any>{
-    return this.httpClient.put<any>(this.apiUrl + `project/update/${id}`, project);
+  public updateProject(id:number, body: any): Observable<any>{
+    return this.httpClient.put<any>(this.apiUrl + `project/update/${id}`, body);
   }
 
   public deleteProject(id: number): Observable<any>{
@@ -109,8 +109,8 @@ export class ApiService {
     return this.httpClient.post<any>(this.apiUrl + 'skill/create', skill);
   }
 
-  public updateSkill(id:number, skill: Skill): Observable<any>{
-    return this.httpClient.put<any>(this.apiUrl + `skill/update/${id}`, skill);
+  public updateSkill(id:number, body: any): Observable<any>{
+    return this.httpClient.put<any>(this.apiUrl + `skill/update/${id}`, body);
   }
 
   public deleteSkill(id: number): Observable<any>{

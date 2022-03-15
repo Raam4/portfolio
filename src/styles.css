@@ -65,3 +65,13 @@ section{
 .p-dialog-content > .ng-star-inserted{
   width: 85%;
 }
+
+.p-datepicker table td{
+  padding: 0;
+  margin: 0.15rem;
+}
+
+.p-datepicker table td > span {
+  width: 65%;
+  height: 65%;
+}

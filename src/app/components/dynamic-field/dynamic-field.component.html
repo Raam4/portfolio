@@ -1,4 +1,4 @@
-<ng-container [formGroup]="form" *ngIf="field.key != 'id' && field.key != 'table'">
+<ng-container [formGroup]="form" *ngIf="field.key != 'id' && field.key != 'table' && field.key != 'person'">
     <label [attr.for]="field.key">{{field.label}}</label>
     <ng-container [ngSwitch]="field.controlType">
       
@@ -12,7 +12,7 @@
       [attr.aria-described-by]="field.key+'-help'" style="resize:none; height: 200px;" pInputTextarea></textarea>
 
       <p-calendar *ngSwitchCase="'date'" class="inputfield w-full" [formControlName]="field.key" [id]="field.key"
-      view="month" dateFormat="mm/yy" [attr.aria-described-by]="field.key+'-help'"></p-calendar>
+      dateFormat="yy-mm-dd" placeholder="yyyy-mm-dd" [attr.aria-described-by]="field.key+'-help'" [ngStyle]="{'display': 'block'}"></p-calendar>
 
     </ng-container>
     <small [id]="field.key+'-help'" class="p-error" *ngIf="isDirty && !isValid">{{field.label}} is required</small>

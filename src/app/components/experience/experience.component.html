@@ -1,20 +1,33 @@
 <section id="experience">
-    <div class="content">
+    <div class="content" *ngIf="$exp | async as jobs; else noExp">
         <p-fieldset styleClass="fieldset-box">
-            <ng-template pTemplate="header"><h1 class="accent fieldset-header">Experience</h1></ng-template>
+            <ng-template pTemplate="header">
+                <h1 class="accent fieldset-header">Experience
+                <p-button *ngIf="isLogged()" type="button" icon="pi pi-plus" (click)="newExperience()"></p-button>
+                </h1>
+            </ng-template>
             <p-panel styleClass="exp-panel" *ngFor="let job of jobs">
                 <ng-template pTemplate="header">
-                    <h2 class="exp-panel-header accent">{{job.company}}</h2><img *ngIf="job.logoLoc != null" src={{job.logoLoc}}>
+                    <h2 class="exp-panel-header accent">
+                        {{job.company}}
+                        <p-button *ngIf="isLogged()" type="button" icon="pi pi-pencil" class="mx-1" (click)="editInfo(job)"></p-button>
+                        <p-button *ngIf="isLogged()" type="button" icon="pi pi-times" class="mx-1" (click)="deleteExperience(job.id)"></p-button>
+                    </h2>
+                    <img *ngIf="job.logoLoc != null" class="flex justify-content-end" src={{job.logoLoc}}>
                 </ng-template>
                 <span class="position">{{job.position}}</span>
                 <p>{{job.description}}</p>
                 <ng-template pTemplate="footer">
                     <span class="accent">{{job.location}} | {{job.dateStart}}</span>
                     <div *ngIf="job.dateEnd != null; then dateEnd else present"></div>
-                    <ng-template #dateEnd><span class="accent"> - {{job.dateEnd}}</span></ng-template>
-                    <ng-template #present><span class="accent"> - Present</span></ng-template>
+                    <ng-template #dateEnd><span class="accent"> / {{job.dateEnd}}</span></ng-template>
+                    <ng-template #present><span class="accent"> / Present</span></ng-template>
                 </ng-template>
             </p-panel>
         </p-fieldset>
     </div>
+    <ng-template #noExp>
+        <h1>No Experience in the database</h1>
+    </ng-template>
 </section>
+<p-toast id="xp" (onClose)="toastClose()"></p-toast>
