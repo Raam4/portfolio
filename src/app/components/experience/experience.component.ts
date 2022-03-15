@@ -24,7 +24,7 @@ export class ExperienceComponent implements OnInit {
 
   constructor(
     private apiService: ApiService,
-    public dialogService: DialogService,
+    private dialogService: DialogService,
     private fServ: ExperienceFormService,
     private tokenService: TokenService,
     private messageService: MessageService,
@@ -33,6 +33,16 @@ export class ExperienceComponent implements OnInit {
 
   ngOnInit(): void {
     this.loadExperience();
+  }
+
+  loadExperience(){
+    this.$exp = this.apiService.listExperience().pipe(
+      tap(data => {
+        data.sort((a, b) => 
+          new Date(b.dateStart).getTime() - new Date(a.dateStart).getTime()
+        );
+      })
+    );
   }
 
   editInfo(experience: Experience) {
@@ -61,16 +71,6 @@ export class ExperienceComponent implements OnInit {
         "justify-content":"center"
       }
     });
-  }
-
-  loadExperience(){
-    this.$exp = this.apiService.listExperience().pipe(
-      tap(data => {
-        data.sort((a, b) => 
-          new Date(b.dateStart).getTime() - new Date(a.dateStart).getTime()
-        );
-      })
-    );
   }
 
   deleteExperience(id: any){

@@ -2,8 +2,9 @@
     <div class="content" *ngIf="$exp | async as jobs; else noExp">
         <p-fieldset styleClass="fieldset-box">
             <ng-template pTemplate="header">
-                <h1 class="accent fieldset-header">Experience
-                <p-button *ngIf="isLogged()" type="button" icon="pi pi-plus" (click)="newExperience()"></p-button>
+                <h1 class="accent fieldset-header">
+                    Experience
+                    <p-button *ngIf="isLogged()" type="button" icon="pi pi-plus" (click)="newExperience()"></p-button>
                 </h1>
             </ng-template>
             <p-panel styleClass="exp-panel" *ngFor="let job of jobs">

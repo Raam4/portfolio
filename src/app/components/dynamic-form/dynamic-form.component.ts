@@ -44,7 +44,7 @@ export class DynamicFormComponent implements OnInit {
     const table = data.table;
     delete data.table;
     if(!(this.isLogged())){
-      this.messageService.add({severity:'error', summary:'Expirated', detail:'Session expirated, please login again.'});
+      this.messageService.add({id: 'dynf', severity:'error', summary:'Expirated', detail:'Session expirated, please login again.'});
     }else{
       switch(table){
         case 'person': {
@@ -59,13 +59,21 @@ export class DynamicFormComponent implements OnInit {
           }
           break;
         }
+        case 'education': {
+          if(flag){
+            this.apiService.updateEducation(id, data).subscribe( info => { this.toast(table) } );
+          }else{
+            this.apiService.saveEducation(data).subscribe( info => { this.toast(table) } );
+          }
+          break;
+        }
       }
     }
 
   }
 
   toast(table:any){
-    this.messageService.add({severity:'success', summary: table+' info saved', detail: 'Wait or close this toast to reload.', life: 3000});
+    this.messageService.add({id: 'dynf', severity:'success', summary: table+' info saved', detail: 'Wait or close this toast to reload.', life: 3000});
     this.form.disable();
   }
 

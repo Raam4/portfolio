@@ -44,6 +44,7 @@ import { AppRoutingModule } from './app-routing.module';
 
 import { HomeForm } from './components/home/home-form.component';
 import { ExperienceForm } from './components/experience/experience-form.component';
+import { EducationForm } from './components/education/education-form.component';
 import { AuthService } from './services/auth.service';
 import { TokenService } from './services/token.service';
 
@@ -61,6 +62,7 @@ import { TokenService } from './services/token.service';
     LoginComponent,
     HomeForm,
     ExperienceForm,
+    EducationForm,
     DynamicFieldComponent,
     DynamicFormComponent
   ],

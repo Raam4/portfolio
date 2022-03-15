@@ -1,7 +1,12 @@
 <section id="education">
-    <div class="content">
+    <div class="content" *ngIf="$edu | async as titles; else noEdu">
         <p-fieldset styleClass="fieldset-box">
-            <ng-template pTemplate="header"><h1 class="accent fieldset-header">Education</h1></ng-template>
+            <ng-template pTemplate="header">
+                <h1 class="accent fieldset-header">
+                    Education
+                    <p-button *ngIf="isLogged()" type="button" icon="pi pi-plus" (click)="newEducation()"></p-button>
+                </h1>
+            </ng-template>
             <p-timeline [value]="titles" align="alternate" styleClass="customized-timeline">
                 <ng-template pTemplate="content" let-title>
                     <p-card [header]="title.title" [subheader]="title.degree" [style]="{'min-width':'250px'}">
@@ -14,9 +19,17 @@
                         <ng-template #dateEnd> to {{title.dateEnd}}</ng-template>
                         <ng-template #present> to Present</ng-template>
                         </span>
+                        <ng-template *ngIf="isLogged()" pTemplate="footer">
+                            <p-button type="button" icon="pi pi-pencil" class="mx-1" (click)="editInfo(title)"></p-button>
+                            <p-button type="button" icon="pi pi-times" class="mx-1" (click)="deleteEducation(title.id)"></p-button>
+                        </ng-template>
                     </p-card>
                 </ng-template>
             </p-timeline>
         </p-fieldset>
     </div>
+    <ng-template #noEdu>
+        <h1>No Education in database</h1>
+    </ng-template>
 </section>
+<p-toast id="edu" (onClose)="toastClose()"></p-toast>
