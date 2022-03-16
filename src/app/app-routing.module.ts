@@ -6,7 +6,7 @@ import { AboutComponent } from './components/about/about.component';
 import { HomeComponent } from './components/home/home.component';
 import { ExperienceComponent } from './components/experience/experience.component';
 import { EducationComponent } from './components/education/education.component';
-import { ProjectsComponent } from './components/projects/projects.component';
+import { ProjectComponent } from './components/project/project.component';
 import { SkillsComponent } from './components/skills/skills.component';
 import { LoginComponent } from './components/login/login.component';
 
@@ -21,7 +21,7 @@ const routes: Routes = [
       {path: 'about', component: AboutComponent},
       {path: 'experience', component: ExperienceComponent},
       {path: 'education', component: EducationComponent},
-      {path: 'projects', component: ProjectsComponent},
+      {path: 'projects', component: ProjectComponent},
       {path: 'skills', component: SkillsComponent},
       {path: '', redirectTo: 'home', pathMatch: 'full'},
       {path: '**', redirectTo: 'home'}

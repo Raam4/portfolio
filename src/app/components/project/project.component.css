@@ -1,8 +1,8 @@
-#projects{
+#project{
     background: url('../../../assets/images/mockup2.jpg') center;
     background-size: cover;
 }
-#gal-content{
+#car-content{
     margin-top: 1.5rem;
     display: flex;
     justify-content: center;
@@ -15,7 +15,7 @@
     text-decoration: none;
 }
 @media (min-width: 960px) {
-    #projects{
+    #project{
         background-attachment: fixed;
     }
 }

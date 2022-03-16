@@ -14,7 +14,7 @@ import { ScrollTopModule } from 'primeng/scrolltop';
 import { PanelModule } from 'primeng/panel';
 import { TimelineModule } from 'primeng/timeline';
 import { CardModule } from 'primeng/card';
-import { GalleriaModule } from 'primeng/galleria';
+import { CarouselModule } from 'primeng/carousel';
 import { DividerModule } from 'primeng/divider';
 import { ChipModule } from 'primeng/chip';
 import { TooltipModule } from 'primeng/tooltip';
@@ -35,7 +35,7 @@ import { AboutComponent } from './components/about/about.component';
 import { HomeComponent } from './components/home/home.component';
 import { ExperienceComponent } from './components/experience/experience.component';
 import { EducationComponent } from './components/education/education.component';
-import { ProjectsComponent } from './components/projects/projects.component';
+import { ProjectComponent } from './components/project/project.component';
 import { SkillsComponent } from './components/skills/skills.component';
 import { LoginComponent } from './components/login/login.component';
 import { DynamicFieldComponent } from './components/dynamic-field/dynamic-field.component';
@@ -45,6 +45,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { HomeForm } from './components/home/home-form.component';
 import { ExperienceForm } from './components/experience/experience-form.component';
 import { EducationForm } from './components/education/education-form.component';
+import { ProjectForm } from './components/project/project-form-component';
 import { AuthService } from './services/auth.service';
 import { TokenService } from './services/token.service';
 
@@ -57,12 +58,13 @@ import { TokenService } from './services/token.service';
     HomeComponent,
     ExperienceComponent,
     EducationComponent,
-    ProjectsComponent,
+    ProjectComponent,
     SkillsComponent,
     LoginComponent,
     HomeForm,
     ExperienceForm,
     EducationForm,
+    ProjectForm,
     DynamicFieldComponent,
     DynamicFormComponent
   ],
@@ -83,7 +85,7 @@ import { TokenService } from './services/token.service';
     PanelModule,
     TimelineModule,
     CardModule,
-    GalleriaModule,
+    CarouselModule,
     DividerModule,
     ChipModule,
     TooltipModule,

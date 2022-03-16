@@ -20,7 +20,10 @@
     }
     .sideNav .p-menubar-start h3{
         display: inline-block;
-        margin: 0;
+        margin: 0 0 0 2.5rem;
+    }
+    .p-menubar-button{
+        position: absolute;
     }
     .p-menubar-end {
         display: flex;

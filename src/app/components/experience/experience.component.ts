@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, NgZone, OnInit, ViewEncapsulation } from '@angular/core';
 import { Experience } from 'src/app/models/experience';
 import { ApiService } from 'src/app/services/api.service';
 import { ExperienceForm } from './experience-form.component';
@@ -28,7 +28,8 @@ export class ExperienceComponent implements OnInit {
     private fServ: ExperienceFormService,
     private tokenService: TokenService,
     private messageService: MessageService,
-    private router: Router
+    private router: Router,
+    private ngZone: NgZone
   ) { }
 
   ngOnInit(): void {
@@ -76,7 +77,7 @@ export class ExperienceComponent implements OnInit {
   deleteExperience(id: any){
     this.apiService.deleteExperience(id).subscribe(
       data => {
-        this.messageService.add({id: 'xp', severity:'warn', summary: data.message, detail: 'Wait or close this toast to reload.', life: 3000});
+        this.messageService.add({key: 'xp', severity:'warn', summary: data.message, detail: 'Wait or close this toast to reload.', life: 3000});
       }
     );
   }
@@ -84,7 +85,7 @@ export class ExperienceComponent implements OnInit {
   toastClose(){
     this.router.routeReuseStrategy.shouldReuseRoute = () => false;
     this.router.onSameUrlNavigation = 'reload';
-    this.router.navigate([this.router.url]);
+    this.ngZone.run( () => { this.router.navigate([this.router.url]) } )
   }
 
   isLogged(){

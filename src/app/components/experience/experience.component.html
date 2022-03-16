@@ -11,8 +11,10 @@
                 <ng-template pTemplate="header">
                     <h2 class="exp-panel-header accent">
                         {{job.company}}
-                        <p-button *ngIf="isLogged()" type="button" icon="pi pi-pencil" class="mx-1" (click)="editInfo(job)"></p-button>
-                        <p-button *ngIf="isLogged()" type="button" icon="pi pi-times" class="mx-1" (click)="deleteExperience(job.id)"></p-button>
+                        <ng-template *ngIf="isLogged()">
+                            <p-button type="button" icon="pi pi-pencil" class="mx-1" (click)="editInfo(job)"></p-button>
+                            <p-button type="button" icon="pi pi-times" class="mx-1" (click)="deleteExperience(job.id)"></p-button>
+                        </ng-template>
                     </h2>
                     <img *ngIf="job.logoLoc != null" class="flex justify-content-end" src={{job.logoLoc}}>
                 </ng-template>
@@ -31,4 +33,4 @@
         <h1>No Experience in the database</h1>
     </ng-template>
 </section>
-<p-toast id="xp" (onClose)="toastClose()"></p-toast>
+<p-toast key="xp" (onClose)="toastClose()"></p-toast>

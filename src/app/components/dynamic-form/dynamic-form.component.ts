@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, NgZone, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { ApiService } from 'src/app/services/api.service';
 import { FormControlService } from 'src/app/services/forms/form-control.service';
@@ -25,7 +25,8 @@ export class DynamicFormComponent implements OnInit {
     private messageService: MessageService,
     private router: Router,
     private ref: DynamicDialogRef,
-    private tokenService: TokenService
+    private tokenService: TokenService,
+    private ngZone: NgZone
     ) {}
 
   ngOnInit() {
@@ -67,13 +68,21 @@ export class DynamicFormComponent implements OnInit {
           }
           break;
         }
+        case 'project': {
+          if(flag){
+            this.apiService.updateProject(id, data).subscribe( info => { this.toast(table) } );
+          }else{
+            this.apiService.saveProject(data).subscribe( info => { this.toast(table) } );
+          }
+          break;
+        }
       }
     }
 
   }
 
   toast(table:any){
-    this.messageService.add({id: 'dynf', severity:'success', summary: table+' info saved', detail: 'Wait or close this toast to reload.', life: 3000});
+    this.messageService.add({key: 'dynf', severity:'success', summary: table+' info saved', detail: 'Wait or close this toast to reload.', life: 3000});
     this.form.disable();
   }
 
@@ -81,7 +90,7 @@ export class DynamicFormComponent implements OnInit {
     this.ref.close();
     this.router.routeReuseStrategy.shouldReuseRoute = () => false;
     this.router.onSameUrlNavigation = 'reload';
-    this.router.navigate([this.router.url]);
+    this.ngZone.run( () => { this.router.navigate([this.router.url]) } );
   }
 
   isLogged(){

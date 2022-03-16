@@ -3,56 +3,56 @@ import { Router } from '@angular/router';
 import { MessageService } from 'primeng/api';
 import { DialogService } from 'primeng/dynamicdialog';
 import { Observable, tap } from 'rxjs';
-import { Education } from 'src/app/models/education';
 import { BaseField } from 'src/app/models/forms/base-field';
+import { Project } from 'src/app/models/project';
 import { ApiService } from 'src/app/services/api.service';
-import { EducationFormService } from 'src/app/services/forms/education-form.service';
+import { ProjectFormService } from 'src/app/services/forms/project-form.service';
 import { TokenService } from 'src/app/services/token.service';
-import { EducationForm } from './education-form.component';
+import { ProjectForm } from './project-form-component';
 
 @Component({
-  selector: 'app-education',
-  templateUrl: './education.component.html',
-  styleUrls: ['./education.component.css'],
+  selector: 'app-project',
+  templateUrl: './project.component.html',
+  styleUrls: ['./project.component.css'],
   encapsulation: ViewEncapsulation.None
 })
-export class EducationComponent implements OnInit {
+export class ProjectComponent implements OnInit {
 
   $fields: Observable<BaseField<any>[]>;
-
-  $edu: Observable<Education[]>;
-
+  
+  $pro: Observable<Project[]>;
+  
   constructor(
-    private apiService: ApiService,
+    private apiService:ApiService,
     private dialogService: DialogService,
-    private fServ: EducationFormService,
+    private fServ: ProjectFormService,
     private tokenService: TokenService,
     private messageService: MessageService,
     private router: Router,
     private ngZone: NgZone
-  ) { }
+    ) { }
 
   ngOnInit(): void {
-    this.loadEducation();
+    this.loadProject();
   }
 
-  loadEducation(){
-    this.$edu = this.apiService.listEducation().pipe(
+  loadProject(){
+    this.$pro = this.apiService.listProject().pipe(
       tap(data => {
         data.sort((a, b) => 
-          new Date(b.dateStart).getTime() - new Date(a.dateStart).getTime()
+          b.dateYear - a.dateYear
         );
       })
     );
   }
 
-  editInfo(education: Education) {
-    this.$fields = this.fServ.getEducationForm(education);
-    const ref = this.dialogService.open(EducationForm, {
+  editInfo(project: Project) {
+    this.$fields = this.fServ.getProjectForm(project);
+    const ref = this.dialogService.open(ProjectForm, {
         data: {
           fields: this.$fields
         },
-        header: 'Edit education info',
+        header: 'Edit project info',
         contentStyle: {
           "display":"flex",
           "justify-content":"center"
@@ -60,13 +60,13 @@ export class EducationComponent implements OnInit {
     });
   }
 
-  newEducation(){
-    this.$fields = this.fServ.getEducationForm(null);
-    const ref = this.dialogService.open(EducationForm, {
+  newProject(){
+    this.$fields = this.fServ.getProjectForm(null);
+    const ref = this.dialogService.open(ProjectForm, {
       data: {
         fields: this.$fields
       },
-      header: 'Add new education item',
+      header: 'Add new project item',
       contentStyle: {
         "display":"flex",
         "justify-content":"center"
@@ -74,10 +74,10 @@ export class EducationComponent implements OnInit {
     });
   }
 
-  deleteEducation(id: any){
-    this.apiService.deleteEducation(id).subscribe(
+  deleteProject(id: any){
+    this.apiService.deleteProject(id).subscribe(
       data => {
-        this.messageService.add({key: 'edu', severity:'warn', summary: data.message, detail: 'Wait or close this toast to reload.', life: 3000});
+        this.messageService.add({key: 'pro', severity:'warn', summary: data.message, detail: 'Wait or close this toast to reload.', life: 3000});
       }
     );
   }
@@ -85,7 +85,7 @@ export class EducationComponent implements OnInit {
   toastClose(){
     this.router.routeReuseStrategy.shouldReuseRoute = () => false;
     this.router.onSameUrlNavigation = 'reload';
-    this.ngZone.run( () => { this.router.navigate([this.router.url]) } );
+    this.ngZone.run( () => { this.router.navigate([this.router.url]) } )
   }
 
   isLogged(){

@@ -3,54 +3,47 @@ import { BaseField } from 'src/app/models/forms/base-field';
 import { TextField } from 'src/app/models/forms/text-field';
 import { TextareaField } from 'src/app/models/forms/textarea-field';
 import { Observable, of } from 'rxjs';
-import { Experience } from 'src/app/models/experience';
+import { Project } from 'src/app/models/project';
 import { NumberField } from 'src/app/models/forms/number-field';
-import { DateField } from 'src/app/models/forms/date-field';
 import { ObjectField } from 'src/app/models/forms/object-field';
 
 @Injectable({
   providedIn: 'root'
 })
-export class ExperienceFormService {
+export class ProjectFormService {
 
   constructor() { }
   
-  public getExperienceForm(experience: Experience | null): Observable<BaseField<any>[]>{
+  public getProjectForm(project:Project | null): Observable<BaseField<any>[]>{
 
-    const fields: BaseField<string | Date | number | {} | null>[] = [
+    const fields: BaseField<string | number | {} | null>[] = [
 
       new TextField({
-        key: 'position',
-        label: 'Position',
+        key: 'name',
+        label: 'Name',
         required: true,
         order: 1
       }),
 
       new TextField({
-        key: 'company',
-        label: 'Company',
+        key: 'techs',
+        label: 'Techs',
         required: true,
         order: 2
       }),
 
-      new TextField({
-        key: 'location',
-        label: 'Location',
+      new NumberField({
+        key: 'dateYear',
+        label: 'Year of finalization',
         required: true,
         order: 3
       }),
 
-      new DateField({
-        key: 'dateStart',
-        label: 'Start Date',
+      new TextField({
+        key: 'link',
+        label: 'Link',
         required: true,
         order: 4
-      }),
-
-      new DateField({
-        key: 'dateEnd',
-        label: 'End Date',
-        order: 5
       }),
 
       new TextareaField({
@@ -62,7 +55,7 @@ export class ExperienceFormService {
 
       new TextField({
         key: 'table',
-        value: 'experience',
+        value: 'project',
         required: false,
         order: 7
       }),
@@ -75,16 +68,15 @@ export class ExperienceFormService {
 
     ];
 
-    if(experience != null){
+    if(project != null){
       fields.forEach(element => {
         switch(element.key){
-          case 'id':{ element.value = experience.id; break; }
-          case 'position':{ element.value = experience.position; break; }
-          case 'company':{ element.value = experience.company; break; }
-          case 'location':{ element.value = experience.location; break; }
-          case 'dateStart':{ element.value = experience.dateStart; break; }
-          case 'dateEnd':{ element.value = experience.dateEnd; break; }
-          case 'description':{ element.value = experience.description; break; }
+          case 'id':{ element.value = project.id; break; }
+          case 'name':{ element.value = project.name; break; }
+          case 'techs':{ element.value = project.techs; break; }
+          case 'dateYear':{ element.value = project.dateYear; break; }
+          case 'link':{ element.value = project.link; break; }
+          case 'description':{ element.value = project.description; break; }
         }
       });
     }else{

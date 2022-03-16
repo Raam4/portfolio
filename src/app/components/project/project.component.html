@@ -1,0 +1,39 @@
+<section id="project">
+    <div class="content" *ngIf="$pro | async as projects; else noPro">
+        <p-fieldset styleClass="fieldset-box">
+            <ng-template pTemplate="header">
+                <h1 class="accent fieldset-header">
+                    Projects
+                    <p-button *ngIf="isLogged()" type="button" icon="pi pi-plus" (click)="newProject()"></p-button>
+                </h1>
+        </ng-template>
+            <div id="car-content">
+                <p-carousel [value]="projects" [showIndicators]="true" [style]="{'max-width': '650px'}" [circular]="true" [autoplayInterval]="15000">
+                    <ng-template pTemplate="item" let-item>
+                        <p-card header={{item.name}} subheader={{item.techs}}>
+                            <ng-template pTemplate="header">
+                                <p-image src={{item.picLoc}} width="400px" height="300px"></p-image>
+                            </ng-template>
+                            <ng-template *ngIf="isLogged()">
+                                <p-button type="button" icon="pi pi-pencil" class="mx-1" (click)="editInfo(item)"></p-button>
+                                <p-button type="button" icon="pi pi-times" class="mx-1" (click)="deleteProject(item.id)"></p-button>
+                            </ng-template>
+                            <span class="accent">{{item.dateYear}}</span>
+                            <p>{{item.description}}</p>
+                            <a href={{item.link}} class="pro-link"><p-chip label="Go to project" styleClass="custom-chip"></p-chip></a>
+                            <br>
+                            <ng-template *ngIf="isLogged()" pTemplate="footer">
+                                <p-button type="button" icon="pi pi-pencil" class="mx-1" (click)="editInfo(item)"></p-button>
+                                <p-button type="button" icon="pi pi-times" class="mx-1" (click)="deleteProject(item.id)"></p-button>
+                            </ng-template>
+                        </p-card>
+                    </ng-template>
+                </p-carousel>
+            </div>
+        </p-fieldset>
+    </div>
+    <ng-template #noPro>
+        <h1>No Projects in the database</h1>
+    </ng-template>
+</section>
+<p-toast key="pro" (onClose)="toastClose()"></p-toast>
