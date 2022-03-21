@@ -1,0 +1,44 @@
+#skills{
+    background: url('../../../assets/images/pc.jpg') center;
+    background-size: cover;
+}
+#skills .content{
+    display: flex;
+    justify-content: center;
+}
+.fieldset-box-skills{
+    background: rgba(255, 255, 255, 0.15);
+  }
+.p-divider-content{
+    border: 1px solid whitesmoke;
+}
+h4.accent{
+    margin: 0.5rem;
+}
+.skill-items{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.soft{
+    margin: 0.5rem;
+}
+.skill-items img{
+    width: 4rem;
+    height: 4rem;
+    margin: 0.75rem;
+}
+.skill-items svg{
+    width: 4rem;
+    height: 4rem;
+    margin: 0.75rem;
+}
+.p-image-mask{
+    display: none!important;
+}
+@media (min-width: 960px) {
+    #skills{
+        background-attachment: fixed;
+    }
+}

@@ -1,0 +1,11 @@
+<div>
+  <form (ngSubmit)="onSubmit()" [formGroup]="form">
+    <div *ngFor="let field of fields" class="field">
+      <app-dynamic-field [field]="field" [form]="form"></app-dynamic-field>
+    </div>
+    <div class="flex justify-content-end">
+      <p-button type="submit" label="Save" icon="pi pi-save" [disabled]="!form.valid"></p-button>
+    </div>
+  </form>
+</div>
+<p-toast key="dynf" (onClose)="onClose()"></p-toast>

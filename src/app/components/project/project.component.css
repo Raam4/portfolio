@@ -1,0 +1,21 @@
+#project{
+    background: url('../../../assets/images/mockup2.jpg') center;
+    background-size: cover;
+}
+#car-content{
+    margin-top: 1.5rem;
+    display: flex;
+    justify-content: center;
+}
+.p-chip.custom-chip {
+    background: var(--primary-color);
+    color: var(--primary-color-text);
+}
+.p-card-content a:any-link{
+    text-decoration: none;
+}
+@media (min-width: 960px) {
+    #project{
+        background-attachment: fixed;
+    }
+}

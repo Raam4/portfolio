@@ -1,0 +1,27 @@
+<ng-container [formGroup]="form" *ngIf="field.key != 'id' && field.key != 'table' && field.key != 'person'">
+    <label [attr.for]="field.key">{{field.label}}</label>
+    <ng-container [ngSwitch]="field.controlType">
+      
+      <p-inputNumber *ngSwitchCase="'number'" class="inputfield w-full" [formControlName]="field.key" [id]="field.key"
+      [attr.aria-described-by]="field.key+'-help'" [maxlength]="4" [useGrouping]="false"></p-inputNumber>
+      
+      <input *ngSwitchCase="'text'" class="inputfield w-full" [formControlName]="field.key" [id]="field.key"
+      [attr.aria-described-by]="field.key+'-help'" [type]="field.type" pInputText>
+
+      <textarea *ngSwitchCase="'textbox'" class="inputfield w-full" [formControlName]="field.key" [id]="field.key"
+      [attr.aria-described-by]="field.key+'-help'" style="resize:none; height: 200px;" pInputTextarea></textarea>
+
+      <p-calendar *ngSwitchCase="'date'" class="inputfield w-full" [formControlName]="field.key" [id]="field.key"
+      dateFormat="yy-mm-dd" placeholder="yyyy-mm-dd" [attr.aria-described-by]="field.key+'-help'" [ngStyle]="{'display': 'block'}"></p-calendar>
+
+      <p-dropdown *ngSwitchCase="'select'" [formControlName]="field.key" [id]="field.key" [options]="field.options"
+      optionValue="key" optionLabel="value" [ngStyle]="{'display': 'block'}">
+      </p-dropdown>
+
+      <p-fileUpload *ngSwitchCase="'file'" mode="basic" [formControlName]="field.key" [id]="field.key"
+      [customUpload]="true" (uploadHandler)="onFileChange($event)" [auto]="true" ngDefaultControl="none"
+      accept="image/svg+xml"></p-fileUpload>
+
+    </ng-container>
+    <small [id]="field.key+'-help'" class="p-error" *ngIf="isDirty && !isValid">{{field.label}} is required</small>
+</ng-container>

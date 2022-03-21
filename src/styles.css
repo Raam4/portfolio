@@ -1,0 +1,77 @@
+@font-face {
+  font-family: 'Roboto Slab';
+  src: url('assets/fonts/RobotoSlab-Variable.ttf');
+  font-weight: 100 900;
+  font-stretch: 25% 150%;
+}
+
+*{
+  font-family: 'Roboto Slab';
+}
+
+@media (min-width: 960px) {
+    body {
+      padding-top: 0;
+      padding-left: 17rem;
+    }
+    section{
+      padding-bottom: 5rem;
+    }
+    .content{
+      padding-left: 5rem;
+    }
+}
+body {
+    margin: 0;
+    height: 100%;
+    overflow-x: hidden;
+    overflow-y: auto;
+    background-color: var(--surface-ground);
+    color: var(--text-color);
+    font-weight: normal;
+}
+section{
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-top: 3.5rem;
+  padding-bottom: 5rem;
+}
+.content{
+  width: 100%;
+}
+.fieldset-box{
+  background: rgba(0, 0, 0, 0.45);
+}
+.fieldset-header{
+  margin: 0;
+  font-size: 2rem;
+}
+.accent{
+  color: var(--primary-color);
+}
+.p-dynamic-dialog{
+  width: 80%;
+  height: auto;
+}
+@media (min-width: 960px) {
+  .p-dynamic-dialog{
+    width: 40%;
+  }
+}
+.p-dialog-content > .ng-star-inserted{
+  width: 85%;
+}
+
+.p-datepicker table td{
+  padding: 0;
+  margin: 0.15rem;
+}
+
+.p-datepicker table td > span {
+  width: 65%;
+  height: 65%;
+}

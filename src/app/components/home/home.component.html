@@ -1,0 +1,12 @@
+<section id="home">
+    <div class="content" *ngIf="$person | async as person">
+        <h1 class="home-name">
+            {{person.firstName}}
+            <span class="accent">{{person.lastName}}</span>
+        </h1>
+        <div class="subheading">
+            <span class="accent">{{person.title}}</span> from {{person.location}}.
+            <p-button *ngIf="isLogged()" type="button" icon="pi pi-pencil" (click)="editInfo(person)"></p-button>
+        </div>
+    </div>
+</section>
