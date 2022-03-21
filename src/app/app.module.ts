@@ -24,6 +24,8 @@ import { DialogService, DynamicDialogModule } from 'primeng/dynamicdialog';
 import { InputTextareaModule } from 'primeng/inputtextarea';
 import { InputNumberModule } from 'primeng/inputnumber';
 import { CalendarModule } from 'primeng/calendar';
+import { DropdownModule } from 'primeng/dropdown';
+import { FileUploadModule } from 'primeng/fileupload';
 
 import { ApiService } from './services/api.service';
 import { interceptorProvider } from './services/interceptors/pers-interceptor.service';
@@ -46,6 +48,7 @@ import { HomeForm } from './components/home/home-form.component';
 import { ExperienceForm } from './components/experience/experience-form.component';
 import { EducationForm } from './components/education/education-form.component';
 import { ProjectForm } from './components/project/project-form-component';
+import { SkillForm } from './components/skills/skill-form.component';
 import { AuthService } from './services/auth.service';
 import { TokenService } from './services/token.service';
 
@@ -65,6 +68,7 @@ import { TokenService } from './services/token.service';
     ExperienceForm,
     EducationForm,
     ProjectForm,
+    SkillForm,
     DynamicFieldComponent,
     DynamicFormComponent
   ],
@@ -94,7 +98,9 @@ import { TokenService } from './services/token.service';
     ToastModule,
     DynamicDialogModule,
     InputNumberModule,
-    CalendarModule
+    CalendarModule,
+    DropdownModule,
+    FileUploadModule
   ],
   providers: [
     ApiService,

@@ -1,13 +1,18 @@
 <section id="skills">
-    <div class="content">
+    <div class="content" *ngIf="$skills | async as skills; else noSkill">
         <p-fieldset styleClass="fieldset-box-skills" [style]="{'max-width':'800px'}">
-            <ng-template pTemplate="header"><h1 class="accent fieldset-header">Skills</h1></ng-template>
+            <ng-template pTemplate="header">
+                <h1 class="accent fieldset-header">
+                    Skills
+                    <p-button *ngIf="isLogged()" type="button" icon="pi pi-plus" (click)="newSkill()"></p-button>
+                </h1>
+            </ng-template>
             <p-divider align="center">
                 <h4 class="accent">Soft Skills</h4>
             </p-divider>
             <div class="skill-items">
                 <ng-container *ngFor="let skill of skills">
-                    <p-chip *ngIf="skill.type == 'soft'" label={{skill.name}} icon={{skill.icon}} class="soft"></p-chip>
+                    <p-chip *ngIf="skill.type == 'soft'" [label]='skill.name' [icon]='skill.icon' class="soft"></p-chip>
                 </ng-container>
             </div>
             <p-divider align="center">
@@ -15,7 +20,12 @@
             </p-divider>
             <div class="skill-items">
                 <ng-container *ngFor="let skill of skills">
-                    <p-image *ngIf="skill.type == 'frontend'" src='assets/images/logos/{{skill.icon}}' pTooltip={{skill.name}} tooltipPosition="bottom"></p-image>
+                    <p-image *ngIf="skill.type == 'front'" [src]='skill.icon' [pTooltip]='skill.name'
+                    tooltipPosition="bottom" [preview]="isLogged()" (onShow)="deleteSkill(skill.id, skill.name)">
+                        <ng-template pTemplate="indicator">
+                            <i class="pi pi-trash"></i>
+                        </ng-template>
+                    </p-image>
                 </ng-container>
             </div>
             <p-divider align="center">
@@ -23,7 +33,12 @@
             </p-divider>
             <div class="skill-items">
                 <ng-container *ngFor="let skill of skills">
-                    <p-image *ngIf="skill.type == 'backend'" src='assets/images/logos/{{skill.icon}}' pTooltip={{skill.name}} tooltipPosition="bottom"></p-image>
+                    <p-image *ngIf="skill.type == 'back'" [src]='skill.icon' [pTooltip]='skill.name'
+                    tooltipPosition="bottom" [preview]="isLogged()" (onShow)="deleteSkill(skill.id, skill.name)">
+                    <ng-template pTemplate="indicator">
+                        <i class="pi pi-trash"></i>
+                    </ng-template>
+                </p-image>
                 </ng-container>
             </div>
             <p-divider align="center">
@@ -31,9 +46,18 @@
             </p-divider>
             <div class="skill-items">
                 <ng-container *ngFor="let skill of skills">
-                    <p-image *ngIf="skill.type == 'tool'" src='assets/images/logos/{{skill.icon}}' pTooltip={{skill.name}} tooltipPosition="bottom"></p-image>
+                    <p-image *ngIf="skill.type == 'tool'" [src]='skill.icon' [pTooltip]='skill.name'
+                    tooltipPosition="bottom" [preview]="isLogged()" (onShow)="deleteSkill(skill.id, skill.name)">
+                    <ng-template pTemplate="indicator">
+                        <i class="pi pi-trash"></i>
+                    </ng-template>
+                </p-image>
                 </ng-container>
             </div>
         </p-fieldset>
     </div>
+    <ng-template #noSkill>
+        <h1>No Skills in database</h1>
+    </ng-template>
 </section>
+<p-toast key="ski"></p-toast>

@@ -29,6 +29,14 @@ h4.accent{
     height: 4rem;
     margin: 0.75rem;
 }
+.skill-items svg{
+    width: 4rem;
+    height: 4rem;
+    margin: 0.75rem;
+}
+.p-image-mask{
+    display: none!important;
+}
 @media (min-width: 960px) {
     #skills{
         background-attachment: fixed;

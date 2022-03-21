@@ -7,6 +7,7 @@ import { MessageService } from 'primeng/api';
 import { Router } from '@angular/router';
 import { TokenService } from 'src/app/services/token.service';
 import { DynamicDialogRef } from 'primeng/dynamicdialog';
+import { StorageService } from 'src/app/services/storage.service';
 
 @Component({
   selector: 'app-dynamic-form',
@@ -17,7 +18,6 @@ export class DynamicFormComponent implements OnInit {
 
   @Input() fields: BaseField<string>[] | null = [];
   form!: FormGroup;
-  payLoad = '';
 
   constructor(
     private qcs: FormControlService,
@@ -26,7 +26,8 @@ export class DynamicFormComponent implements OnInit {
     private router: Router,
     private ref: DynamicDialogRef,
     private tokenService: TokenService,
-    private ngZone: NgZone
+    private ngZone: NgZone,
+    private storageService: StorageService
     ) {}
 
   ngOnInit() {
@@ -35,8 +36,8 @@ export class DynamicFormComponent implements OnInit {
 
   onSubmit() {
     const data = this.form.value;
-    let id;
-    let flag;
+    let id: any;
+    let flag: any;
     if(data.id != undefined){
       flag = true;
       id = data.id;
@@ -76,9 +77,21 @@ export class DynamicFormComponent implements OnInit {
           }
           break;
         }
+        case 'skill': {
+          this.storageService.uploadImg(data.name, data.icon).then( urlImg =>{
+            data.icon = urlImg;
+            if(data.icon != null){
+              if(flag){
+                this.apiService.updateSkill(id, data).subscribe( info => { this.toast(table) } );
+              }else{
+                this.apiService.saveSkill(data).subscribe( info => { this.toast(table) } );
+              }
+            }
+          });
+          break;
+        }
       }
     }
-
   }
 
   toast(table:any){

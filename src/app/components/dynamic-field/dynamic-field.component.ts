@@ -12,4 +12,12 @@ export class DynamicFieldComponent {
   @Input() form!: FormGroup;
   get isDirty() { return this.form.controls[this.field.key].dirty; }
   get isValid() { return this.form.controls[this.field.key].valid; }
+
+  onFileChange($event: any){
+    let reader = new FileReader();
+    reader.readAsDataURL($event.files[0]);
+    reader.onloadend = () => {
+      this.form.get('icon')?.patchValue(reader.result);
+    }
+  }
 }

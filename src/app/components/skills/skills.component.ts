@@ -1,5 +1,15 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, NgZone, OnInit, ViewEncapsulation } from '@angular/core';
+import { Router } from '@angular/router';
+import { MessageService } from 'primeng/api';
+import { DialogService } from 'primeng/dynamicdialog';
+import { Observable } from 'rxjs';
+import { BaseField } from 'src/app/models/forms/base-field';
+import { Skill } from 'src/app/models/skill';
 import { ApiService } from 'src/app/services/api.service';
+import { SkillFormService } from 'src/app/services/forms/skill-form.service';
+import { StorageService } from 'src/app/services/storage.service';
+import { TokenService } from 'src/app/services/token.service';
+import { SkillForm } from './skill-form.component';
 
 @Component({
   selector: 'app-skills',
@@ -9,156 +19,52 @@ import { ApiService } from 'src/app/services/api.service';
 })
 export class SkillsComponent implements OnInit {
 
-  skills:any[]=[];
+  $fields: Observable<BaseField<any>[]>;
 
-  constructor(private apiService:ApiService) { }
+  $skills: Observable<Skill[]>;
+
+  constructor(
+    private apiService:ApiService,
+    private dialogService: DialogService,
+    private fServ: SkillFormService,
+    private tokenService: TokenService,
+    private messageService: MessageService,
+    private storageService: StorageService
+  ) { }
 
   ngOnInit(): void {
     this.loadSkill();
   }
 
   loadSkill(): void{
-    this.apiService.listSkill().subscribe(
-      data => {
-        this.skills = data;
+    this.$skills = this.apiService.listSkill();
+  }
+
+  newSkill(){
+    this.$fields = this.fServ.getSkillForm(null);
+    const ref = this.dialogService.open(SkillForm, {
+      data: {
+        fields: this.$fields
       },
-      err => {
-        console.log(err);
+      header: 'Add new skill item',
+      contentStyle: {
+        "display":"flex",
+        "justify-content":"center"
+      }
+    });
+  }
+
+  deleteSkill(id: any, name: any){
+    this.apiService.deleteSkill(id).subscribe(
+      data => {
+        this.storageService.deleteImg(name);
+        this.messageService.add({key: 'ski', severity:'warn', summary: data.message, detail: 'Skill deleted', life: 3000});
+        this.loadSkill();
       }
     );
   }
-}
-/*
-  ngOnInit(): void {
-    this.sskills = [
-      {
-        label: 'Time Management',
-        icon: 'pi pi-clock'
-      },
-      {
-        label: 'Growth Mindset',
-        icon: 'pi pi-angle-double-up'
-      },
-      {
-        label: 'Critical Thinking',
-        icon: 'pi pi-comments'
-      },
-      {
-        label: 'Problem-solving',
-        icon: 'pi pi-cog'
-      },
-      {
-        label: 'Open-mindedness',
-        icon: 'pi pi-comment'
-      },
-      {
-        label: 'Teamwork',
-        icon: 'pi pi-users'
-      }
-    ];
-    this.technology = [
-      {
-        src: 'assets/images/logos/html-5.svg',
-        tooltip: 'HTML 5',
-        cla: 'frontend'
-      },
-      {
-        src: 'assets/images/logos/css-3.svg',
-        tooltip: 'CSS 3',
-        cla: 'frontend'
-      },
-      {
-        src: 'assets/images/logos/javascript.svg',
-        tooltip: 'JavaScript',
-        cla: 'frontend'
-      },
-      {
-        src: 'assets/images/logos/typescript-icon.svg',
-        tooltip: 'TypeScript',
-        cla: 'frontend'
-      },
-      {
-        src: 'assets/images/logos/angular-icon.svg',
-        tooltip: 'Angular',
-        cla: 'frontend'
-      },
-      {
-        src: 'assets/images/logos/bootstrap.svg',
-        tooltip: 'Bootstrap',
-        cla: 'frontend'
-      },
-      {
-        src: 'assets/images/logos/primeng.png',
-        tooltip: 'PrimeNG',
-        cla: 'frontend'
-      },
-      {
-        src: 'assets/images/logos/php.svg',
-        tooltip: 'PHP',
-        cla: 'backend'
-      },
-      {
-        src: 'assets/images/logos/java.svg',
-        tooltip: 'Java',
-        cla: 'backend'
-      },
-      {
-        src: 'assets/images/logos/python.svg',
-        tooltip: 'Python',
-        cla: 'backend'
-      },
-      {
-        src: 'assets/images/logos/spring-icon.svg',
-        tooltip: 'Spring Framework',
-        cla: 'backend'
-      },
-      {
-        src: 'assets/images/logos/mysql-icon.svg',
-        tooltip: 'MySQL',
-        cla: 'backend'
-      },
-      {
-        src: 'assets/images/logos/sqlite.svg',
-        tooltip: 'SQLite',
-        cla: 'backend'
-      },
-      {
-        src: 'assets/images/logos/visual-studio-code.svg',
-        tooltip: 'Visual Studio Code',
-        cla: 'tools'
-      },
-      {
-        src: 'assets/images/logos/netbeans.svg',
-        tooltip: 'NetBeans',
-        cla: 'tools'
-      },
-      {
-        src: 'assets/images/logos/git.svg',
-        tooltip: 'Git',
-        cla: 'tools'
-      },
-      {
-        src: 'assets/images/logos/github-icon.svg',
-        tooltip: 'GitHub',
-        cla: 'tools'
-      },
-      {
-        src: 'assets/images/logos/xampp.svg',
-        tooltip: 'XAMPP',
-        cla: 'tools'
-      },
-      {
-        src: 'assets/images/logos/postman-icon.svg',
-        tooltip: 'Postman',
-        cla: 'tools'
-      },
-      {
-        src: 'assets/images/logos/figma.svg',
-        tooltip: 'Figma',
-        cla: 'tools'
-      },
-    ];
-  }
 
+  isLogged(){
+    return this.tokenService.isLogged();
+  }
 }
-*/
