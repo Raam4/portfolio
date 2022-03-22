@@ -1,6 +1,9 @@
 import { Component, OnInit, ViewEncapsulation} from '@angular/core';
 import { TokenService } from '../../services/token.service';
 import { MenuItem } from 'primeng/api';
+import { ApiService } from 'src/app/services/api.service';
+import { Observable } from 'rxjs';
+import { Person } from 'src/app/models/person';
 
 @Component({
   selector: 'app-menubar',
@@ -11,12 +14,18 @@ import { MenuItem } from 'primeng/api';
 
 export class MenubarComponent implements OnInit {
 
+  $person: Observable<Person>;
   items: MenuItem[];
   isAdmin = false;
 
-  constructor(private tokenService: TokenService){}
+  constructor(
+    private tokenService: TokenService,
+    private apiService: ApiService
+    ){}
 
   ngOnInit(): void {
+
+    this.$person = this.apiService.getData();
 
     this.isAdmin = this.tokenService.isAdmin();
 

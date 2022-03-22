@@ -20,7 +20,7 @@
 
       <p-fileUpload *ngSwitchCase="'file'" mode="basic" [formControlName]="field.key" [id]="field.key"
       [customUpload]="true" (uploadHandler)="onFileChange($event)" [auto]="true" ngDefaultControl="none"
-      accept="image/svg+xml"></p-fileUpload>
+      accept="image/*"></p-fileUpload>
 
     </ng-container>
     <small [id]="field.key+'-help'" class="p-error" *ngIf="isDirty && !isValid">{{field.label}} is required</small>

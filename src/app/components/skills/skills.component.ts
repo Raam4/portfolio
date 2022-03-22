@@ -57,7 +57,7 @@ export class SkillsComponent implements OnInit {
   deleteSkill(id: any, name: any){
     this.apiService.deleteSkill(id).subscribe(
       data => {
-        this.storageService.deleteImg(name);
+        this.storageService.delImgSkill(name);
         this.messageService.add({key: 'ski', severity:'warn', summary: data.message, detail: 'Skill deleted', life: 3000});
         this.loadSkill();
       }

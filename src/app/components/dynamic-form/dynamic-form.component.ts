@@ -50,7 +50,14 @@ export class DynamicFormComponent implements OnInit {
     }else{
       switch(table){
         case 'person': {
-          this.apiService.updatePerson(id, data).subscribe( info => { this.toast(table) } );
+          if(data.imgUrl.search('data') != -1){
+            this.storageService.upProfilePic(data.imgUrl).then( urlImg =>{
+              data.imgUrl = urlImg;
+              this.apiService.updatePerson(id, data).subscribe( info => { this.toast(table) } );
+            });
+          }else{
+            this.apiService.updatePerson(id, data).subscribe( info => { this.toast(table) } );
+          }
           break;
         }
         case 'experience': {
@@ -78,9 +85,9 @@ export class DynamicFormComponent implements OnInit {
           break;
         }
         case 'skill': {
-          this.storageService.uploadImg(data.name, data.icon).then( urlImg =>{
-            data.icon = urlImg;
-            if(data.icon != null){
+          this.storageService.upImgSkill(data.name, data.imgUrl).then( urlImg =>{
+            data.imgUrl = urlImg;
+            if(data.imgUrl != null){
               if(flag){
                 this.apiService.updateSkill(id, data).subscribe( info => { this.toast(table) } );
               }else{

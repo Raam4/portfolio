@@ -14,7 +14,7 @@ export class StorageService {
   constructor() { }
   
 
-  async uploadImg(name: string, imgBase64: any){
+  async upImgSkill(name: string, imgBase64: any){
     try{
       const skillRef = ref(storage, 'skills/logos/' + name);
       const upTask =  await uploadString(skillRef, imgBase64, 'data_url');
@@ -25,12 +25,23 @@ export class StorageService {
     }
   }
 
-  deleteImg(name: string){
+  delImgSkill(name: string){
     const imgRef = ref(storage, 'skills/logos/' + name);
     deleteObject(imgRef).then(() => {
       return 'Deleted';
     }).catch((error) => {
       return error;
     });
+  }
+
+  async upProfilePic(imgBase64: any){
+    try{
+      const picRef = ref(storage, 'person/profilePic');
+      const upTask =  await uploadString(picRef, imgBase64, 'data_url');
+      return await getDownloadURL(upTask.ref);
+    }catch(err){
+      console.log(err);
+      return null;
+    }
   }
 }

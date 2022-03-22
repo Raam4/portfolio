@@ -13,9 +13,19 @@ import { Skill } from '../models/skill';
 })
 export class ApiService {
 
+  $person: Observable<Person>;
+
   apiUrl = environment.apiUrl;
 
   constructor( private httpClient: HttpClient) { }
+
+  public getData(): Observable<Person>{
+    return this.$person;
+  }
+
+  public updateData(): void{
+    this.$person = this.detailPerson(1);
+  }
 
   public listPerson(): Observable<Person[]>{
     return this.httpClient.get<Person[]>(this.apiUrl + 'person/list');

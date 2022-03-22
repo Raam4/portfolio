@@ -16,7 +16,7 @@
                             <p-button type="button" icon="pi pi-times" class="mx-1" (click)="deleteExperience(job.id)"></p-button>
                         </ng-container>
                     </h2>
-                    <img *ngIf="job.logoLoc != null" class="flex justify-content-end" src={{job.logoLoc}}>
+                    <img *ngIf="job.imgUrl != null" class="flex justify-content-end" [src]="job.imgUrl">
                 </ng-template>
                 <span class="position">{{job.position}}</span>
                 <p>{{job.description}}</p>

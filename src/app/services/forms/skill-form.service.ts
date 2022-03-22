@@ -67,7 +67,7 @@ export class SkillFormService {
           case 'id':{ element.value = skill.id; break; }
           case 'name':{ element.value = skill.name; break; }
           case 'type':{ element.value = skill.type; break; }
-          case 'icon':{ element.value = skill.icon; break; }
+          case 'imgUrl':{ element.value = skill.imgUrl; break; }
         }
       });
     }else{

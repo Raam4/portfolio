@@ -17,7 +17,7 @@ export class DynamicFieldComponent {
     let reader = new FileReader();
     reader.readAsDataURL($event.files[0]);
     reader.onloadend = () => {
-      this.form.get('icon')?.patchValue(reader.result);
+      this.form.get('imgUrl')?.patchValue(reader.result);
     }
   }
 }

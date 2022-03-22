@@ -4,18 +4,18 @@ export class Experience {
     id?: number;
     position: string;
     company: string;
-    logoLoc: string;
+    imgUrl: string;
     location: string;
     dateStart: Date;
     dateEnd: Date;
     description: string;
     person: Person;
 
-    constructor(position: string, company: string, logoLoc: string, location: string,
+    constructor(position: string, company: string, imgUrl: string, location: string,
         dateStart: Date, dateEnd: Date, description: string, person: Person){
             this.position = position;
             this.company = company;
-            this.logoLoc = logoLoc;
+            this.imgUrl = imgUrl;
             this.location = location;
             this.dateStart = dateStart;
             this.dateEnd = dateEnd;

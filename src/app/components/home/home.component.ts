@@ -29,7 +29,7 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit(){
-    this.loadPerson();
+    this.$person = this.apiService.getData();
   }
 
   editInfo(person: Person) {
@@ -44,10 +44,6 @@ export class HomeComponent implements OnInit {
           "justify-content":"center"
         }
     });
-  }
-
-  loadPerson(){
-    this.$person = this.apiService.detailPerson(1);
   }
 
   isLogged(){

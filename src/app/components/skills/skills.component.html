@@ -12,7 +12,7 @@
             </p-divider>
             <div class="skill-items">
                 <ng-container *ngFor="let skill of skills">
-                    <p-chip *ngIf="skill.type == 'soft'" [label]='skill.name' [icon]='skill.icon' class="soft"></p-chip>
+                    <p-chip *ngIf="skill.type == 'soft'" [label]='skill.name' [icon]='skill.imgUrl' class="soft"></p-chip>
                 </ng-container>
             </div>
             <p-divider align="center">
@@ -20,7 +20,7 @@
             </p-divider>
             <div class="skill-items">
                 <ng-container *ngFor="let skill of skills">
-                    <p-image *ngIf="skill.type == 'front'" [src]='skill.icon' [pTooltip]='skill.name'
+                    <p-image *ngIf="skill.type == 'front'" [src]='skill.imgUrl' [pTooltip]='skill.name'
                     tooltipPosition="bottom" [preview]="isLogged()" (onShow)="deleteSkill(skill.id, skill.name)">
                         <ng-template pTemplate="indicator">
                             <i class="pi pi-trash"></i>
@@ -33,7 +33,7 @@
             </p-divider>
             <div class="skill-items">
                 <ng-container *ngFor="let skill of skills">
-                    <p-image *ngIf="skill.type == 'back'" [src]='skill.icon' [pTooltip]='skill.name'
+                    <p-image *ngIf="skill.type == 'back'" [src]='skill.imgUrl' [pTooltip]='skill.name'
                     tooltipPosition="bottom" [preview]="isLogged()" (onShow)="deleteSkill(skill.id, skill.name)">
                     <ng-template pTemplate="indicator">
                         <i class="pi pi-trash"></i>
@@ -46,7 +46,7 @@
             </p-divider>
             <div class="skill-items">
                 <ng-container *ngFor="let skill of skills">
-                    <p-image *ngIf="skill.type == 'tool'" [src]='skill.icon' [pTooltip]='skill.name'
+                    <p-image *ngIf="skill.type == 'tool'" [src]='skill.imgUrl' [pTooltip]='skill.name'
                     tooltipPosition="bottom" [preview]="isLogged()" (onShow)="deleteSkill(skill.id, skill.name)">
                     <ng-template pTemplate="indicator">
                         <i class="pi pi-trash"></i>

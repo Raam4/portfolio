@@ -3,15 +3,15 @@ export class Person {
     firstName: string;
     lastName: string;
     title: string;
-    picLoc: string;
+    imgUrl: string;
     location: string;
     about: string;
 
-    constructor(firstName: string, lastName: string, title: string, picLoc: string, location: string, about: string){
+    constructor(firstName: string, lastName: string, title: string, imgUrl: string, location: string, about: string){
         this.firstName = firstName;
         this.lastName = lastName;
         this.title = title;
-        this.picLoc = picLoc;
+        this.imgUrl = imgUrl;
         this.location = location;
         this.about = about;
     }

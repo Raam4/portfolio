@@ -1,8 +1,8 @@
 <p-menubar [model]="items" styleClass="sideNav">
     <ng-template pTemplate="start">
-        <a routerLink="/portfolio/home">
-            <h3>Ramiro <span class="accent">Cardozo</span></h3>
-            <p-image src="assets/images/profilepic.jpg" styleClass="profile-pic" atl="Profile pic"></p-image>
+        <a routerLink="/portfolio/home" *ngIf="$person | async as person">
+            <h3>{{person.firstName}} <span class="accent">{{person.lastName}}</span></h3>
+            <p-image [src]="person.imgUrl" styleClass="profile-pic" atl="Profile pic"></p-image>
         </a>
     </ng-template>
     <ng-template pTemplate="end">

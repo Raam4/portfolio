@@ -4,13 +4,13 @@ export class Skill {
     id?:number;
     name:string;
     type:string;
-    icon:string;
+    imgUrl:string;
     person:Person;
 
-    constructor(name:string, type:string, icon:string, person:Person){
+    constructor(name:string, type:string, imgUrl:string, person:Person){
         this.name = name;
         this.type = type;
-        this.icon = icon;
+        this.imgUrl = imgUrl;
         this.person = person;
     }
 }

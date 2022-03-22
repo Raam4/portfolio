@@ -12,7 +12,7 @@
                     <ng-template pTemplate="item" let-item>
                         <p-card header={{item.name}} subheader={{item.techs}}>
                             <ng-template pTemplate="header">
-                                <p-image src={{item.picLoc}} width="400px" height="300px"></p-image>
+                                <p-image [src]="item.imgUrl" width="400px" height="300px"></p-image>
                             </ng-template>
                             <ng-template *ngIf="isLogged()">
                                 <p-button type="button" icon="pi pi-pencil" class="mx-1" (click)="editInfo(item)"></p-button>
@@ -20,7 +20,7 @@
                             </ng-template>
                             <span class="accent">{{item.dateYear}}</span>
                             <p>{{item.description}}</p>
-                            <a href={{item.link}} class="pro-link"><p-chip label="Go to project" styleClass="custom-chip"></p-chip></a>
+                            <a [href]="item.link" class="pro-link"><p-chip label="Go to project" styleClass="custom-chip"></p-chip></a>
                             <br>
                             <ng-template *ngIf="isLogged()" pTemplate="footer">
                                 <p-button type="button" icon="pi pi-pencil" class="mx-1" (click)="editInfo(item)"></p-button>
