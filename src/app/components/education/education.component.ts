@@ -8,7 +8,7 @@ import { BaseField } from 'src/app/models/forms/base-field';
 import { ApiService } from 'src/app/services/api.service';
 import { EducationFormService } from 'src/app/services/forms/education-form.service';
 import { TokenService } from 'src/app/services/token.service';
-import { EducationForm } from './education-form.component';
+import { TempFormComponent } from '../dynamic-form/temp-form.component';
 
 @Component({
   selector: 'app-education',
@@ -48,7 +48,7 @@ export class EducationComponent implements OnInit {
 
   editInfo(education: Education) {
     this.$fields = this.fServ.getEducationForm(education);
-    const ref = this.dialogService.open(EducationForm, {
+    const ref = this.dialogService.open(TempFormComponent, {
         data: {
           fields: this.$fields
         },
@@ -62,7 +62,7 @@ export class EducationComponent implements OnInit {
 
   newEducation(){
     this.$fields = this.fServ.getEducationForm(null);
-    const ref = this.dialogService.open(EducationForm, {
+    const ref = this.dialogService.open(TempFormComponent, {
       data: {
         fields: this.$fields
       },

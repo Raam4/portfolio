@@ -1,7 +1,6 @@
 import { Component, NgZone, OnInit, ViewEncapsulation } from '@angular/core';
 import { Experience } from 'src/app/models/experience';
 import { ApiService } from 'src/app/services/api.service';
-import { ExperienceForm } from './experience-form.component';
 import { DialogService } from 'primeng/dynamicdialog';
 import { ExperienceFormService } from 'src/app/services/forms/experience-form.service';
 import { Observable, tap } from 'rxjs';
@@ -9,6 +8,7 @@ import { BaseField } from 'src/app/models/forms/base-field';
 import { TokenService } from 'src/app/services/token.service';
 import { MessageService } from 'primeng/api';
 import { Router } from '@angular/router';
+import { TempFormComponent } from '../dynamic-form/temp-form.component';
 
 @Component({
   selector: 'app-experience',
@@ -48,7 +48,7 @@ export class ExperienceComponent implements OnInit {
 
   editInfo(experience: Experience) {
     this.$fields = this.fServ.getExperienceForm(experience);
-    const ref = this.dialogService.open(ExperienceForm, {
+    const ref = this.dialogService.open(TempFormComponent, {
         data: {
           fields: this.$fields
         },
@@ -62,7 +62,7 @@ export class ExperienceComponent implements OnInit {
 
   newExperience(){
     this.$fields = this.fServ.getExperienceForm(null);
-    const ref = this.dialogService.open(ExperienceForm, {
+    const ref = this.dialogService.open(TempFormComponent, {
       data: {
         fields: this.$fields
       },

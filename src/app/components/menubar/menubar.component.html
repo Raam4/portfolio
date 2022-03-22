@@ -20,7 +20,7 @@
                 <a class="p-menuitem-link" href="mailto:ramiro_cardozo22@hotmail.com"><i class="pi pi-envelope"></i></a>
             </li>
         </ul>
-        <p-button *ngIf="!isLogged" label="Login" icon="pi pi-sign-in" routerLink="/login"></p-button>
-        <p-button *ngIf="isLogged" label="Logout" icon="pi pi-sign-out" (onClick)="logOut()"></p-button>
+        <p-button *ngIf="!isLogged()" label="Login" icon="pi pi-sign-in" routerLink="/login"></p-button>
+        <p-button *ngIf="isLogged()" label="Logout" icon="pi pi-sign-out" (onClick)="logOut()"></p-button>
     </ng-template>
 </p-menubar>

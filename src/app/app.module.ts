@@ -33,7 +33,6 @@ import { interceptorProvider } from './services/interceptors/pers-interceptor.se
 import { AppComponent } from './app.component';
 import { PortfolioComponent } from './components/portfolio/portfolio.component';
 import { MenubarComponent } from './components/menubar/menubar.component';
-import { AboutComponent } from './components/about/about.component';
 import { HomeComponent } from './components/home/home.component';
 import { ExperienceComponent } from './components/experience/experience.component';
 import { EducationComponent } from './components/education/education.component';
@@ -42,13 +41,9 @@ import { SkillsComponent } from './components/skills/skills.component';
 import { LoginComponent } from './components/login/login.component';
 import { DynamicFieldComponent } from './components/dynamic-field/dynamic-field.component';
 import { DynamicFormComponent } from './components/dynamic-form/dynamic-form.component';
+import { TempFormComponent } from './components/dynamic-form/temp-form.component';
 import { AppRoutingModule } from './app-routing.module';
 
-import { HomeForm } from './components/home/home-form.component';
-import { ExperienceForm } from './components/experience/experience-form.component';
-import { EducationForm } from './components/education/education-form.component';
-import { ProjectForm } from './components/project/project-form-component';
-import { SkillForm } from './components/skills/skill-form.component';
 import { AuthService } from './services/auth.service';
 import { TokenService } from './services/token.service';
 
@@ -57,20 +52,15 @@ import { TokenService } from './services/token.service';
     AppComponent,
     PortfolioComponent,
     MenubarComponent,
-    AboutComponent,
     HomeComponent,
     ExperienceComponent,
     EducationComponent,
     ProjectComponent,
     SkillsComponent,
     LoginComponent,
-    HomeForm,
-    ExperienceForm,
-    EducationForm,
-    ProjectForm,
-    SkillForm,
     DynamicFieldComponent,
-    DynamicFormComponent
+    DynamicFormComponent,
+    TempFormComponent
   ],
   imports: [
     BrowserModule,

@@ -9,7 +9,7 @@ import { ApiService } from 'src/app/services/api.service';
 import { SkillFormService } from 'src/app/services/forms/skill-form.service';
 import { StorageService } from 'src/app/services/storage.service';
 import { TokenService } from 'src/app/services/token.service';
-import { SkillForm } from './skill-form.component';
+import { TempFormComponent } from '../dynamic-form/temp-form.component';
 
 @Component({
   selector: 'app-skills',
@@ -42,7 +42,7 @@ export class SkillsComponent implements OnInit {
 
   newSkill(){
     this.$fields = this.fServ.getSkillForm(null);
-    const ref = this.dialogService.open(SkillForm, {
+    const ref = this.dialogService.open(TempFormComponent, {
       data: {
         fields: this.$fields
       },

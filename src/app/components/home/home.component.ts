@@ -2,11 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { Person } from 'src/app/models/person';
 import { ApiService } from 'src/app/services/api.service';
 import { DialogService } from 'primeng/dynamicdialog';
-import { HomeForm } from './home-form.component';
 import { HomeFormService } from 'src/app/services/forms/home-form.service';
 import { Observable } from 'rxjs';
 import { BaseField } from 'src/app/models/forms/base-field';
 import { TokenService } from 'src/app/services/token.service';
+import { TempFormComponent } from '../dynamic-form/temp-form.component';
 
 @Component({
   selector: 'app-home',
@@ -34,7 +34,7 @@ export class HomeComponent implements OnInit {
 
   editInfo(person: Person) {
     this.$fields = this.fServ.getPersonForm(person);
-    const ref = this.dialogService.open(HomeForm, {
+    const ref = this.dialogService.open(TempFormComponent, {
         data: {
           fields: this.$fields,
         },

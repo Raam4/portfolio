@@ -8,7 +8,7 @@ import { Project } from 'src/app/models/project';
 import { ApiService } from 'src/app/services/api.service';
 import { ProjectFormService } from 'src/app/services/forms/project-form.service';
 import { TokenService } from 'src/app/services/token.service';
-import { ProjectForm } from './project-form-component';
+import { TempFormComponent } from '../dynamic-form/temp-form.component';
 
 @Component({
   selector: 'app-project',
@@ -48,7 +48,7 @@ export class ProjectComponent implements OnInit {
 
   editInfo(project: Project) {
     this.$fields = this.fServ.getProjectForm(project);
-    const ref = this.dialogService.open(ProjectForm, {
+    const ref = this.dialogService.open(TempFormComponent, {
         data: {
           fields: this.$fields
         },
@@ -62,7 +62,7 @@ export class ProjectComponent implements OnInit {
 
   newProject(){
     this.$fields = this.fServ.getProjectForm(null);
-    const ref = this.dialogService.open(ProjectForm, {
+    const ref = this.dialogService.open(TempFormComponent, {
       data: {
         fields: this.$fields
       },

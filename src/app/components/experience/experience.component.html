@@ -11,10 +11,10 @@
                 <ng-template pTemplate="header">
                     <h2 class="exp-panel-header accent">
                         {{job.company}}
-                        <ng-template *ngIf="isLogged()">
+                        <ng-container *ngIf="isLogged()">
                             <p-button type="button" icon="pi pi-pencil" class="mx-1" (click)="editInfo(job)"></p-button>
                             <p-button type="button" icon="pi pi-times" class="mx-1" (click)="deleteExperience(job.id)"></p-button>
-                        </ng-template>
+                        </ng-container>
                     </h2>
                     <img *ngIf="job.logoLoc != null" class="flex justify-content-end" src={{job.logoLoc}}>
                 </ng-template>

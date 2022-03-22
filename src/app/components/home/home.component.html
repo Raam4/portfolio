@@ -8,5 +8,11 @@
             <span class="accent">{{person.title}}</span> from {{person.location}}.
             <p-button *ngIf="isLogged()" type="button" icon="pi pi-pencil" (click)="editInfo(person)"></p-button>
         </div>
+        <div class="my-5">
+            <p-fieldset styleClass="fieldset-box" [toggleable]="true" [collapsed]="true" [style]="{'max-width':'75%'}">
+                <ng-template pTemplate="header"><h3 class="accent fieldset-header">About me</h3></ng-template>
+                    {{person.about}}
+            </p-fieldset>
+        </div>
     </div>
 </section>

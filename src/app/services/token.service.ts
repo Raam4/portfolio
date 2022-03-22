@@ -8,7 +8,7 @@ const TOKEN_KEY = 'AuthToken';
 })
 export class TokenService {
 
-  roles: Array<string> = [];
+  roles: Array<string>;
 
   constructor(
     private router: Router

@@ -5,10 +5,10 @@ import { FormGroup } from '@angular/forms';
 import { Observable } from 'rxjs';
 
 @Component({
-    selector: 'app-home-form',
+    selector: 'app-skill-form',
     template: `<app-dynamic-form [fields]="fields$ | async"></app-dynamic-form>`
 })
-export class HomeForm {
+export class TempFormComponent {
     @Input() field!: BaseField<string>;
     @Input() form!: FormGroup;
     fields$: Observable<BaseField<any>[]>;
@@ -20,5 +20,4 @@ export class HomeForm {
     }
     get isValid() { return this.form.controls[this.field.key].valid;}
     
-
 }

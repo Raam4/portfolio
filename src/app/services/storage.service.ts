@@ -1,9 +1,7 @@
 import { Injectable } from '@angular/core';
 import { initializeApp } from "firebase/app";
 import { getStorage, ref, uploadString, getDownloadURL, deleteObject } from "firebase/storage";
-import { url } from 'inspector';
 import { environment } from 'src/environments/environment';
-import { resourceLimits } from 'worker_threads';
 
 const firebase = initializeApp(environment.firebaseConfig);
 const storage = getStorage(firebase);
