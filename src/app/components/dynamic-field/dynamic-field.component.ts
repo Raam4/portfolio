@@ -7,7 +7,7 @@ import { BaseField } from '../../models/forms/base-field';
   selector: 'app-dynamic-field',
   templateUrl: './dynamic-field.component.html'
 })
-export class DynamicFieldComponent {
+export class DynamicFieldComponent{
   @Input() field!: BaseField<string>;
   @Input() form!: FormGroup;
   get isDirty() { return this.form.controls[this.field.key].dirty; }

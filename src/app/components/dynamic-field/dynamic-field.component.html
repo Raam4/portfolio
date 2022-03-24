@@ -18,9 +18,16 @@
       optionValue="key" optionLabel="value" [ngStyle]="{'display': 'block'}">
       </p-dropdown>
 
-      <p-fileUpload *ngSwitchCase="'file'" mode="basic" [formControlName]="field.key" [id]="field.key"
+      <p-fileUpload *ngSwitchCase="'file'" mode="advanced" [formControlName]="field.key" [id]="field.key"
       [customUpload]="true" (uploadHandler)="onFileChange($event)" [auto]="true" ngDefaultControl="none"
-      accept="image/*"></p-fileUpload>
+      accept="image/*">
+        <ng-template pTemplate="content" *ngIf="field.value">
+          <figure [style]="{'margin':'0', 'display':'flex', 'align-items':'center', 'justify-content':'space-around'}">
+            <img [src]="field.value" width="75px">
+            <figcaption>Image currently loaded</figcaption>
+        </figure>
+        </ng-template>
+      </p-fileUpload>
 
     </ng-container>
     <small [id]="field.key+'-help'" class="p-error" *ngIf="isDirty && !isValid">{{field.label}} is required</small>

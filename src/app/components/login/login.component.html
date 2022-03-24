@@ -11,16 +11,16 @@
                     <div class="col-5 flex align-items-center justify-content-center">
                         <div class="p-fluid">
                             <h1 class="accent text-center text-4xl">Login</h1>
-                            <form #log="ngForm" (ngSubmit)="onLogin()" novalidate>
+                            <form [formGroup]="loginForm" (ngSubmit)="onLogin()">
                                 <div class="field">
                                     <label for="username">Username</label>
-                                    <input pInputText id="username" name="username" type="text" [(ngModel)]="username" required />
+                                    <input pInputText id="username" name="username" type="text" formControlName="username" />
                                 </div>
                                 <div class="field">
                                     <label for="password">Password</label>
-                                    <input pInputText id="password" name="password" type="password" [(ngModel)]="password" required />
+                                    <input pInputText id="password" name="password" type="password" formControlName="password" />
                                 </div>
-                                <p-button label="Login" icon="pi pi-sign-in" [disabled]="!log.valid" type="submit"></p-button>
+                                <p-button label="Login" icon="pi pi-sign-in" [disabled]="!loginForm.valid" type="submit"></p-button>
                             </form>
                         </div>
                     </div>
@@ -32,24 +32,24 @@
                     <div class="col-5 flex align-items-center justify-content-center">
                         <div class="p-fluid">
                             <h1 class="accent text-center text-4xl">Sign up</h1>
-                            <form #reg="ngForm" (ngSubmit)="onRegister()" novalidate>
+                            <form [formGroup]="signinForm" (ngSubmit)="onRegister()">
                                 <div class="field">
                                     <label for="email">Email</label>
-                                    <input pInputText id="email" name="email" type="email" [(ngModel)]="email">
+                                    <input pInputText id="email" name="email" type="email" formControlName="email" required />
                                 </div>
                                 <div class="field">
                                     <label for="newUsername">Username</label>
-                                    <input pInputText id="newUsername" name="newUsername" [(ngModel)]="newUsername" />
+                                    <input pInputText id="signUsername" name="signUsername" formControlName="signUsername" required />
                                 </div>
                                 <div class="field">
                                     <label for="newPassword">Password</label>
-                                    <input pInputText id="newPassword" name="newPassword" type="password" [(ngModel)]="newPassword" />
+                                    <input pInputText id="signPassword" name="signPassword" type="password" formControlName="signPassword" required />
                                 </div>
                                 <div class="field">
                                     <label for="confirmPassword">Confirm Password</label>
-                                    <input pInputText id="confirmPassword" type="password" />
+                                    <input pInputText id="confirmPassword" type="password" formControlName="confirmPassword" required />
                                 </div>
-                                <p-button label="Sign Up" icon="pi pi-user-plus" [disabled]="!reg.valid" type="submit"></p-button>
+                                <p-button label="Sign Up" icon="pi pi-user-plus" [disabled]="!signinForm.valid" type="submit"></p-button>
                             </form>
                         </div>
                     </div>
