@@ -15,6 +15,9 @@
     .sideNav .p-menubar-start p-image{
         display: none;
     }
+    #spinner-sidebar{
+        display: none;
+    }
     .sideNav .p-menubar-start a:any-link{
         color: var(--text-color);
     }
@@ -33,8 +36,8 @@
         display: inline-block;
     }
     .p-menubar #social-icons{
-        display: inline-block;
-        margin-right: 1rem;
+        display: inline-flex;
+        margin-right: 0.5rem;
     }
     .p-menubar .social-icon .p-menuitem-link {
         padding: 0.5rem 0.75rem;

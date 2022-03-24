@@ -1,9 +1,12 @@
 <p-menubar [model]="items" styleClass="sideNav">
     <ng-template pTemplate="start">
-        <a routerLink="/portfolio/home" *ngIf="$person | async as person">
+        <a routerLink="/portfolio/home" *ngIf="$person | async as person; else noPic">
             <h3>{{person.firstName}} <span class="accent">{{person.lastName}}</span></h3>
             <p-image [src]="person.imgUrl" styleClass="profile-pic" atl="Profile pic"></p-image>
         </a>
+        <ng-template #noPic>
+            <p-progressSpinner id="spinner-sidebar" fill="var(--surface-d)"></p-progressSpinner>
+        </ng-template>
     </ng-template>
     <ng-template pTemplate="end">
         <ul id="social-icons">

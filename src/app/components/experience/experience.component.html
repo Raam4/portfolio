@@ -30,7 +30,8 @@
         </p-fieldset>
     </div>
     <ng-template #noExp>
-        <h1>No Experience in the database</h1>
+        <p-progressSpinner strokeWidth="4" fill="var(--surface-d)"></p-progressSpinner>
+        <h1 class="accent">Loading...</h1>
     </ng-template>
 </section>
 <p-toast key="xp" (onClose)="toastClose()"></p-toast>

@@ -1,5 +1,5 @@
 <section id="home">
-    <div class="content" *ngIf="$person | async as person">
+    <div class="content" *ngIf="$person | async as person; else noPer">
         <h1 class="home-name">
             {{person.firstName}}
             <span class="accent">{{person.lastName}}</span>
@@ -15,4 +15,8 @@
             </p-fieldset>
         </div>
     </div>
+    <ng-template #noPer>
+        <p-progressSpinner styleClass="custom-spinner" strokeWidth="4" fill="var(--surface-d)"></p-progressSpinner>
+        <h1 class="accent">Loading...</h1>
+    </ng-template>
 </section>

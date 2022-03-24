@@ -26,6 +26,7 @@ import { InputNumberModule } from 'primeng/inputnumber';
 import { CalendarModule } from 'primeng/calendar';
 import { DropdownModule } from 'primeng/dropdown';
 import { FileUploadModule } from 'primeng/fileupload';
+import { ProgressSpinnerModule } from 'primeng/progressspinner';
 
 import { ApiService } from './services/api.service';
 import { interceptorProvider } from './services/interceptors/pers-interceptor.service';
@@ -90,7 +91,8 @@ import { TokenService } from './services/token.service';
     InputNumberModule,
     CalendarModule,
     DropdownModule,
-    FileUploadModule
+    FileUploadModule,
+    ProgressSpinnerModule
   ],
   providers: [
     ApiService,

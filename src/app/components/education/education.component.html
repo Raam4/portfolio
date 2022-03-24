@@ -29,7 +29,8 @@
         </p-fieldset>
     </div>
     <ng-template #noEdu>
-        <h1>No Education in database</h1>
+        <p-progressSpinner strokeWidth="4" fill="var(--surface-d)"></p-progressSpinner>
+        <h1 class="accent">Loading...</h1>
     </ng-template>
 </section>
 <p-toast key="edu" (onClose)="toastClose()"></p-toast>

@@ -3,8 +3,11 @@ import { ApiService } from 'src/app/services/api.service';
 
 @Component({
   selector: 'app-portfolio',
-  templateUrl: './portfolio.component.html',
-  styleUrls: ['./portfolio.component.css']
+  template: `
+              <app-menubar></app-menubar>
+              <p-scrollTop></p-scrollTop>
+              <router-outlet></router-outlet>
+            `
 })
 export class PortfolioComponent implements OnInit {
 

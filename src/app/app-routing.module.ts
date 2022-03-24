@@ -13,7 +13,7 @@ import { LoginGuard } from './services/guards/login.guard';
 
 const routes: Routes = [
   {
-    path: 'portfolio',
+    path: '',
     component: PortfolioComponent,
     children:[
       {path: 'home', component: HomeComponent},
@@ -21,13 +21,12 @@ const routes: Routes = [
       {path: 'education', component: EducationComponent},
       {path: 'projects', component: ProjectComponent},
       {path: 'skills', component: SkillsComponent},
+      {path: 'login', component: LoginComponent, canActivate: [LoginGuard]},
       {path: '', redirectTo: 'home', pathMatch: 'full'},
       {path: '**', redirectTo: 'home'}
     ]
   },
-  {path: 'login', component: LoginComponent, canActivate: [LoginGuard]},
-  {path: '', redirectTo: 'portolio/home', pathMatch: 'full'},
-  {path: '**', redirectTo: 'portfolio/home'}
+  {path: '**', redirectTo: 'home'}
 ];
 
 @NgModule({

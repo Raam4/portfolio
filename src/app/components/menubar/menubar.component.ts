@@ -32,23 +32,23 @@ export class MenubarComponent implements OnInit {
     this.items=[
       {
         label: 'Home',
-        routerLink: '/portfolio/home'
+        routerLink: '/home'
       },
       {
         label: 'Experience',
-        routerLink: '/portfolio/experience'
+        routerLink: '/experience'
       },
       {
         label: 'Education',
-        routerLink: '/portfolio/education'
+        routerLink: '/education'
       },
       {
         label: 'Projects',
-        routerLink: '/portfolio/projects'
+        routerLink: '/projects'
       },
       {
         label: 'Skills',
-        routerLink: '/portfolio/skills'
+        routerLink: '/skills'
       }
     ];
   }
