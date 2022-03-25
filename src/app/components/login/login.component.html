@@ -32,22 +32,22 @@
                     <div class="col-5 flex align-items-center justify-content-center">
                         <div class="p-fluid">
                             <h1 class="accent text-center text-4xl">Sign up</h1>
-                            <form [formGroup]="signinForm" (ngSubmit)="onRegister()">
+                            <form [formGroup]="signinForm" (ngSubmit)="onSignin()">
                                 <div class="field">
                                     <label for="email">Email</label>
-                                    <input pInputText id="email" name="email" type="email" formControlName="email" required />
+                                    <input pInputText id="email" name="email" type="email" formControlName="email" />
                                 </div>
                                 <div class="field">
                                     <label for="newUsername">Username</label>
-                                    <input pInputText id="signUsername" name="signUsername" formControlName="signUsername" required />
+                                    <input pInputText id="signUsername" name="signUsername" formControlName="signUsername" />
                                 </div>
                                 <div class="field">
                                     <label for="newPassword">Password</label>
-                                    <input pInputText id="signPassword" name="signPassword" type="password" formControlName="signPassword" required />
+                                    <input pInputText id="signPassword" name="signPassword" type="password" formControlName="signPassword" />
                                 </div>
                                 <div class="field">
                                     <label for="confirmPassword">Confirm Password</label>
-                                    <input pInputText id="confirmPassword" type="password" formControlName="confirmPassword" required />
+                                    <input pInputText id="confirmPassword" type="password" formControlName="confirmPassword" />
                                 </div>
                                 <p-button label="Sign Up" icon="pi pi-user-plus" [disabled]="!signinForm.valid" type="submit"></p-button>
                             </form>

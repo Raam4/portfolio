@@ -5,6 +5,9 @@
 .exp-panel{
     margin: 1.5rem;
 }
+.exp-panel .p-panel-header{
+    justify-content: space-around;
+}
 .exp-panel-header{
     margin: 0;
 }

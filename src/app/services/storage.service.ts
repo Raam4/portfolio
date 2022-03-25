@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { initializeApp } from "firebase/app";
-import { getStorage, ref, uploadString, getDownloadURL, deleteObject } from "firebase/storage";
+import { getStorage, ref, uploadString, getDownloadURL, deleteObject, StorageReference } from "firebase/storage";
 import { environment } from 'src/environments/environment';
 
 const firebase = initializeApp(environment.firebaseConfig);
@@ -14,10 +14,17 @@ export class StorageService {
   constructor() { }
   
 
-  async upImgSkill(name: string, imgBase64: any){
+  async upImg(name: any, imgBase64: any, table: any){
+    let imgref: StorageReference;
+    switch(table){
+      case 1: imgref = ref(storage, 'person/profilePic'); break;
+      case 2: imgref = ref(storage, 'experience/' + name); break;
+      case 3: imgref = ref(storage, 'project/' + name); break;
+      case 4: imgref = ref(storage, 'skills/logos/' + name); break;
+      default: imgref = ref(storage); break;
+    }
     try{
-      const skillRef = ref(storage, 'skills/logos/' + name);
-      const upTask =  await uploadString(skillRef, imgBase64, 'data_url');
+      const upTask =  await uploadString(imgref, imgBase64, 'data_url');
       return await getDownloadURL(upTask.ref);
     }catch(err){
       console.log(err);
@@ -32,16 +39,5 @@ export class StorageService {
     }).catch((error) => {
       return error;
     });
-  }
-
-  async upProfilePic(imgBase64: any){
-    try{
-      const picRef = ref(storage, 'person/profilePic');
-      const upTask =  await uploadString(picRef, imgBase64, 'data_url');
-      return await getDownloadURL(upTask.ref);
-    }catch(err){
-      console.log(err);
-      return null;
-    }
   }
 }

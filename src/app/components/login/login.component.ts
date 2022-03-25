@@ -21,10 +21,10 @@ export class LoginComponent implements OnInit {
   });
 
   signinForm = this.formBuilder.group({
-    email: [''],
-    signUsername: ['', Validators.required, Validators.minLength(5), Validators.maxLength(12)],
-    signPassword: ['', Validators.required, Validators.minLength(4), Validators.maxLength(20)],
-    confirmPassword: ['']
+    email: ['', Validators.required],
+    signUsername: ['', Validators.required],
+    signPassword: ['', Validators.required],
+    confirmPassword: ['', Validators.required]
   });
 
   errmsg: string;
@@ -51,11 +51,11 @@ export class LoginComponent implements OnInit {
     )
   }
 
-  onRegister(): void{
+  onSignin(): void{
     this.newUser = new NewUser(this.signinForm.get('email')?.value, this.signinForm.get('signUsername')?.value, this.signinForm.get('signPassword')?.value);
     this.authService.newUs(this.newUser).subscribe(
       data => {
-        this.messageService.add({severity:'success', summary: 'Register complete!', detail: 'You can now login.'});
+        this.messageService.add({severity:'success', summary: 'Signin complete!', detail: 'You can now login.'});
       }
     );
   }

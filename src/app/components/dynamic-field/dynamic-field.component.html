@@ -1,4 +1,4 @@
-<ng-container [formGroup]="form" *ngIf="field.key != 'id' && field.key != 'table' && field.key != 'person'">
+<ng-container [formGroup]="form" *ngIf="field.key != 'id' && field.key != 'table' && field.key != 'person' && field.key != 'type'">
     <label [attr.for]="field.key">{{field.label}}</label>
     <ng-container [ngSwitch]="field.controlType">
       

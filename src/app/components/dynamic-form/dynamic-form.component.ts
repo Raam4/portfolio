@@ -51,7 +51,7 @@ export class DynamicFormComponent implements OnInit {
       switch(table){
         case 'person': {
           if(data.imgUrl.search('data') != -1){
-            this.storageService.upProfilePic(data.imgUrl).then( urlImg =>{
+            this.storageService.upImg(null, data.imgUrl, 1).then( urlImg =>{
               data.imgUrl = urlImg;
               this.apiService.updatePerson(id, data).subscribe( info => { this.toast(table) } );
             });
@@ -61,10 +61,21 @@ export class DynamicFormComponent implements OnInit {
           break;
         }
         case 'experience': {
-          if(flag){
-            this.apiService.updateExperience(id, data).subscribe( info => { this.toast(table) } );
+          if(data.imgUrl.search('data') != -1){
+            this.storageService.upImg(data.company, data.imgUrl, 2).then( urlImg =>{
+              data.imgUrl = urlImg;
+              if(flag){
+                this.apiService.updateExperience(id, data).subscribe( info => { this.toast(table) } );
+              }else{
+                this.apiService.saveExperience(data).subscribe( info => { this.toast(table) } );
+              }
+            });
           }else{
-            this.apiService.saveExperience(data).subscribe( info => { this.toast(table) } );
+            if(flag){
+              this.apiService.updateExperience(id, data).subscribe( info => { this.toast(table) } );
+            }else{
+              this.apiService.saveExperience(data).subscribe( info => { this.toast(table) } );
+            }
           }
           break;
         }
@@ -77,24 +88,35 @@ export class DynamicFormComponent implements OnInit {
           break;
         }
         case 'project': {
-          if(flag){
-            this.apiService.updateProject(id, data).subscribe( info => { this.toast(table) } );
+          if(data.imgUrl.search('data') != -1){
+            this.storageService.upImg(data.name, data.imgUrl, 3).then( urlImg =>{
+              data.imgUrl = urlImg;
+              if(flag){
+                this.apiService.updateProject(id, data).subscribe( info => { this.toast(table) } );
+              }else{
+                this.apiService.saveProject(data).subscribe( info => { this.toast(table) } );
+              }
+            });
           }else{
-            this.apiService.saveProject(data).subscribe( info => { this.toast(table) } );
+            if(flag){
+              this.apiService.updateProject(id, data).subscribe( info => { this.toast(table) } );
+            }else{
+              this.apiService.saveProject(data).subscribe( info => { this.toast(table) } );
+            }
           }
           break;
         }
         case 'skill': {
-          this.storageService.upImgSkill(data.name, data.imgUrl).then( urlImg =>{
-            data.imgUrl = urlImg;
-            if(data.imgUrl != null){
-              if(flag){
-                this.apiService.updateSkill(id, data).subscribe( info => { this.toast(table) } );
-              }else{
+          if(data.imgUrl){
+            this.storageService.upImg(data.name, data.imgUrl, 4).then( urlImg =>{
+              data.imgUrl = urlImg;
+              if(data.imgUrl != null){
                 this.apiService.saveSkill(data).subscribe( info => { this.toast(table) } );
               }
-            }
-          });
+            });
+          }else{
+            this.apiService.saveSkill(data).subscribe( info => { this.toast(table) } );
+          }
           break;
         }
       }

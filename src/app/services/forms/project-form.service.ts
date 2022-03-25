@@ -6,6 +6,7 @@ import { Observable, of } from 'rxjs';
 import { Project } from 'src/app/models/project';
 import { NumberField } from 'src/app/models/forms/number-field';
 import { ObjectField } from 'src/app/models/forms/object-field';
+import { FileField } from 'src/app/models/forms/file-field';
 
 @Injectable({
   providedIn: 'root'
@@ -32,18 +33,25 @@ export class ProjectFormService {
         order: 2
       }),
 
+      new FileField({
+        key: 'imgUrl',
+        label: 'Image',
+        required: true,
+        order: 3
+      }),
+
       new NumberField({
         key: 'dateYear',
         label: 'Year of finalization',
         required: true,
-        order: 3
+        order: 4
       }),
 
       new TextField({
         key: 'link',
         label: 'Link',
         required: true,
-        order: 4
+        order: 5
       }),
 
       new TextareaField({
@@ -73,6 +81,7 @@ export class ProjectFormService {
         switch(element.key){
           case 'id':{ element.value = project.id; break; }
           case 'name':{ element.value = project.name; break; }
+          case 'imgUrl':{ element.value = project.imgUrl; break; }
           case 'techs':{ element.value = project.techs; break; }
           case 'dateYear':{ element.value = project.dateYear; break; }
           case 'link':{ element.value = project.link; break; }
@@ -86,7 +95,7 @@ export class ProjectFormService {
           key: 'person',
           value: {'id':'1'},
           required: false,
-          order: 8
+          order: 9
         })
       );
     }

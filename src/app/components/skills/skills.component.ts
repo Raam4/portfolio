@@ -40,13 +40,13 @@ export class SkillsComponent implements OnInit {
     this.$skills = this.apiService.listSkill();
   }
 
-  newSkill(){
-    this.$fields = this.fServ.getSkillForm(null);
+  newSkill(type:string){
+    this.$fields = this.fServ.getSkillForm(type);
     const ref = this.dialogService.open(TempFormComponent, {
       data: {
         fields: this.$fields
       },
-      header: 'Add new skill item',
+      header: 'Add new ' + type + ' skill',
       contentStyle: {
         "display":"flex",
         "justify-content":"center"
@@ -57,9 +57,11 @@ export class SkillsComponent implements OnInit {
   deleteSkill(id: any, name: any){
     this.apiService.deleteSkill(id).subscribe(
       data => {
-        this.storageService.delImgSkill(name);
         this.messageService.add({key: 'ski', severity:'warn', summary: data.message, detail: 'Skill deleted', life: 3000});
-        this.loadSkill();
+        if(name != null){
+          this.storageService.delImgSkill(name);
+          this.loadSkill();
+        }
       }
     );
   }

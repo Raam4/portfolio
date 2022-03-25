@@ -4,19 +4,29 @@
             <ng-template pTemplate="header">
                 <h1 class="accent fieldset-header">
                     Skills
-                    <p-button *ngIf="isLogged()" type="button" icon="pi pi-plus" (click)="newSkill()"></p-button>
                 </h1>
             </ng-template>
             <p-divider align="center">
-                <h4 class="accent">Soft Skills</h4>
+                <div class="inline-flex align-items-center">
+                    <h3 class="accent">
+                        Soft Skills
+                    </h3>
+                    <p-button *ngIf="isLogged()" class="m-1" type="button" icon="pi pi-plus" (click)="newSkill('soft')"></p-button>
+                </div>
             </p-divider>
             <div class="skill-items">
                 <ng-container *ngFor="let skill of skills">
-                    <p-chip *ngIf="skill.type == 'soft'" [label]='skill.name' [icon]='skill.imgUrl' class="soft"></p-chip>
+                    <p-chip *ngIf="skill.type == 'soft'" [label]='skill.name' [icon]='skill.imgUrl'
+                    class="soft" [removable]="isLogged()" (onRemove)="deleteSkill(skill.id, null)"></p-chip>
                 </ng-container>
             </div>
             <p-divider align="center">
-                <h4 class="accent">Frontend</h4>
+                <div class="inline-flex align-items-center">
+                    <h3 class="accent">
+                        Frontend
+                    </h3>
+                    <p-button *ngIf="isLogged()" class="m-1" type="button" icon="pi pi-plus" (click)="newSkill('frontend')"></p-button>
+                </div>
             </p-divider>
             <div class="skill-items">
                 <ng-container *ngFor="let skill of skills">
@@ -29,7 +39,12 @@
                 </ng-container>
             </div>
             <p-divider align="center">
-                <h4 class="accent">Backend</h4>
+                <div class="inline-flex align-items-center">
+                    <h3 class="accent">
+                        Backend
+                    </h3>
+                    <p-button *ngIf="isLogged()" class="m-1" type="button" icon="pi pi-plus" (click)="newSkill('backend')"></p-button>
+                </div>
             </p-divider>
             <div class="skill-items">
                 <ng-container *ngFor="let skill of skills">
@@ -42,7 +57,12 @@
                 </ng-container>
             </div>
             <p-divider align="center">
-                <h4 class="accent">Tools</h4>
+                <div class="inline-flex align-items-center">
+                    <h3 class="accent">
+                        Tools
+                    </h3>
+                    <p-button *ngIf="isLogged()" class="m-1" type="button" icon="pi pi-plus" (click)="newSkill('tool')"></p-button>
+                </div>
             </p-divider>
             <div class="skill-items">
                 <ng-container *ngFor="let skill of skills">
