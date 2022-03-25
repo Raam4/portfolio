@@ -56,7 +56,7 @@ export class SkillFormService {
       fields.push(
         new FileField({
           key: 'imgUrl',
-          label: 'imgUrl',
+          label: 'Logo',
           required: true,
           order: 3
         })
