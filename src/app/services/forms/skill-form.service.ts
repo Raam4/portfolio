@@ -55,8 +55,8 @@ export class SkillFormService {
     if(type != 'soft'){
       fields.push(
         new FileField({
-          key: 'icon',
-          label: 'Icon',
+          key: 'imgUrl',
+          label: 'imgUrl',
           required: true,
           order: 3
         })
