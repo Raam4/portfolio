@@ -2,6 +2,14 @@
     <ng-template pTemplate="start">
         <a routerLink="/portfolio/home" *ngIf="$person | async as person; else noPic">
             <h3>{{person.firstName}} <span class="accent">{{person.lastName}}</span></h3>
+            <div id="logo">
+                <fa-stack>
+                    <fa-icon [icon]="faSquare" stackItemSize="2x"></fa-icon>
+                    <fa-icon [icon]="faTerminal" [styles]="{'color': 'black'}" [inverse]="true" stackItemSize="1x"></fa-icon>
+                </fa-stack>
+                <p><span>Argentina</span><span> programa</span></p>
+            </div>
+            <p id="hashtag">#YoProgramo</p>
             <p-image [src]="person.imgUrl" styleClass="profile-pic" atl="Profile pic"></p-image>
         </a>
         <ng-template #noPic>

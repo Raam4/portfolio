@@ -25,12 +25,12 @@
                     <h3 class="accent">
                         Frontend
                     </h3>
-                    <p-button *ngIf="isLogged()" class="m-1" type="button" icon="pi pi-plus" (click)="newSkill('front')"></p-button>
+                    <p-button *ngIf="isLogged()" class="m-1" type="button" icon="pi pi-plus" (click)="newSkill('frontend')"></p-button>
                 </div>
             </p-divider>
             <div class="skill-items">
                 <ng-container *ngFor="let skill of skills">
-                    <p-image *ngIf="skill.type == 'front'" [src]='skill.imgUrl' [pTooltip]='skill.name'
+                    <p-image *ngIf="skill.type == 'frontend'" [src]='skill.imgUrl' [pTooltip]='skill.name'
                     tooltipPosition="bottom" [preview]="isLogged()" (onShow)="deleteSkill(skill.id, skill.name)">
                         <ng-template pTemplate="indicator">
                             <i class="pi pi-trash"></i>
@@ -43,12 +43,12 @@
                     <h3 class="accent">
                         Backend
                     </h3>
-                    <p-button *ngIf="isLogged()" class="m-1" type="button" icon="pi pi-plus" (click)="newSkill('back')"></p-button>
+                    <p-button *ngIf="isLogged()" class="m-1" type="button" icon="pi pi-plus" (click)="newSkill('backend')"></p-button>
                 </div>
             </p-divider>
             <div class="skill-items">
                 <ng-container *ngFor="let skill of skills">
-                    <p-image *ngIf="skill.type == 'back'" [src]='skill.imgUrl' [pTooltip]='skill.name'
+                    <p-image *ngIf="skill.type == 'backend'" [src]='skill.imgUrl' [pTooltip]='skill.name'
                     tooltipPosition="bottom" [preview]="isLogged()" (onShow)="deleteSkill(skill.id, skill.name)">
                     <ng-template pTemplate="indicator">
                         <i class="pi pi-trash"></i>

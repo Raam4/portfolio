@@ -10,6 +10,25 @@
     align-items: center;
     justify-content: center;
 }
+.sideNav .p-menubar-start h3{
+    display: none;
+}
+#logo{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+#logo p {
+    display: inline-block;
+    font-weight: 600;
+    font-size: 14px;
+    margin: 0;
+    color: whitesmoke;
+}
+#logo p span {
+    display: block;
+    color: white;
+}
 
 @media (max-width: 960px){
     .sideNav .p-menubar-start p-image{
@@ -24,6 +43,9 @@
     .sideNav .p-menubar-start h3{
         display: inline-block;
         margin: 0 0 0 2.5rem;
+    }
+    .sideNav .p-menubar-start #logo{
+        display: none;
     }
     .p-menubar-button{
         position: absolute;
@@ -69,10 +91,13 @@
         display: flex;
         flex-direction: column;
     }
-    .sideNav .p-menubar-start h3{
-        display: block;
-        font-size: 1.75rem;
-        margin: 0.5rem 0 2.5rem;
+    .sideNav .p-menubar-start #logo{
+        font-size: 1.25rem;
+        margin-top: 0.5rem;
+    }
+    .sideNav .p-menubar-start #hashtag{
+        color: var(--surface-400);
+        margin: 0 0 2.5rem;
     }
     .sideNav .p-menubar-start img {
         max-width: 9rem;

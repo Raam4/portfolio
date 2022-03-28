@@ -1,4 +1,6 @@
 import { Component, OnInit, ViewEncapsulation} from '@angular/core';
+import { faSquare, faTerminal, faEnvelope } from '@fortawesome/free-solid-svg-icons';
+import { faLinkedin, faGithub, faWhatsapp } from '@fortawesome/free-brands-svg-icons';
 import { TokenService } from '../../services/token.service';
 import { MenuItem } from 'primeng/api';
 import { ApiService } from 'src/app/services/api.service';
@@ -13,6 +15,13 @@ import { Person } from 'src/app/models/person';
 })
 
 export class MenubarComponent implements OnInit {
+
+  faSquare = faSquare;
+  faTerminal = faTerminal;
+  faEnvelope = faEnvelope;
+  faLinkedIn = faLinkedin;
+  faGithub = faGithub;
+  faWhatsapp = faWhatsapp;
 
   $person: Observable<Person>;
   items: MenuItem[];
