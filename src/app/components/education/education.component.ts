@@ -75,11 +75,14 @@ export class EducationComponent implements OnInit {
   }
 
   deleteEducation(id: any){
-    this.apiService.deleteEducation(id).subscribe(
-      data => {
+    this.apiService.deleteEducation(id).subscribe({
+      next: (data) => {
         this.messageService.add({key: 'edu', severity:'warn', summary: data.message, detail: 'Wait or close this toast to reload.', life: 3000});
+      },
+      error: (err) => {
+        this.messageService.add({key: 'edu', severity:'warn', summary: 'Error', detail: `${err.error.message || err.error.error}`, life: 3000});
       }
-    );
+    });
   }
 
   toastClose(){

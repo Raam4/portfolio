@@ -47,6 +47,9 @@
     .sideNav .p-menubar-start #logo{
         display: none;
     }
+    .sideNav .p-menubar-start #hashtag{
+        display: none;
+    }
     .p-menubar-button{
         position: absolute;
     }
@@ -96,6 +99,7 @@
         margin-top: 0.5rem;
     }
     .sideNav .p-menubar-start #hashtag{
+        display: block;
         color: var(--surface-400);
         margin: 0 0 2.5rem;
     }

@@ -53,10 +53,10 @@ export class DynamicFormComponent implements OnInit {
           if(data.imgUrl.search('data') != -1){
             this.storageService.upImg(null, data.imgUrl, 1).then( urlImg =>{
               data.imgUrl = urlImg;
-              this.apiService.updatePerson(id, data).subscribe( info => { this.toast(table) } );
+              this.apiService.updatePerson(id, data).subscribe({ next: () => { this.toast(table) }, error: err => { this.errorToast(err.error)}});
             });
           }else{
-            this.apiService.updatePerson(id, data).subscribe( info => { this.toast(table) } );
+            this.apiService.updatePerson(id, data).subscribe({ next: () => { this.toast(table) }, error: err => { this.errorToast(err.error)}});
           }
           break;
         }
@@ -65,25 +65,25 @@ export class DynamicFormComponent implements OnInit {
             this.storageService.upImg(data.company, data.imgUrl, 2).then( urlImg =>{
               data.imgUrl = urlImg;
               if(flag){
-                this.apiService.updateExperience(id, data).subscribe( info => { this.toast(table) } );
+                this.apiService.updateExperience(id, data).subscribe({ next: () => { this.toast(table) }, error: err => { this.errorToast(err.error)}});
               }else{
-                this.apiService.saveExperience(data).subscribe( info => { this.toast(table) } );
+                this.apiService.saveExperience(data).subscribe({ next: () => { this.toast(table) }, error: err => { this.errorToast(err.error)}});
               }
             });
           }else{
             if(flag){
-              this.apiService.updateExperience(id, data).subscribe( info => { this.toast(table) } );
+              this.apiService.updateExperience(id, data).subscribe({ next: () => { this.toast(table) }, error: err => { this.errorToast(err.error)}});
             }else{
-              this.apiService.saveExperience(data).subscribe( info => { this.toast(table) } );
+              this.apiService.saveExperience(data).subscribe({ next: () => { this.toast(table) }, error: err => { this.errorToast(err.error)}});
             }
           }
           break;
         }
         case 'education': {
           if(flag){
-            this.apiService.updateEducation(id, data).subscribe( info => { this.toast(table) } );
+            this.apiService.updateEducation(id, data).subscribe({ next: () => { this.toast(table) }, error: err => { this.errorToast(err.error)}});
           }else{
-            this.apiService.saveEducation(data).subscribe( info => { this.toast(table) } );
+            this.apiService.saveEducation(data).subscribe({ next: () => { this.toast(table) }, error: err => { this.errorToast(err.error)}});
           }
           break;
         }
@@ -92,16 +92,16 @@ export class DynamicFormComponent implements OnInit {
             this.storageService.upImg(data.name, data.imgUrl, 3).then( urlImg =>{
               data.imgUrl = urlImg;
               if(flag){
-                this.apiService.updateProject(id, data).subscribe( info => { this.toast(table) } );
+                this.apiService.updateProject(id, data).subscribe({ next: () => { this.toast(table) }, error: err => { this.errorToast(err.error)}});
               }else{
-                this.apiService.saveProject(data).subscribe( info => { this.toast(table) } );
+                this.apiService.saveProject(data).subscribe({ next: () => { this.toast(table) }, error: err => { this.errorToast(err.error)}});
               }
             });
           }else{
             if(flag){
-              this.apiService.updateProject(id, data).subscribe( info => { this.toast(table) } );
+              this.apiService.updateProject(id, data).subscribe({ next: () => { this.toast(table) }, error: err => { this.errorToast(err.error)}});
             }else{
-              this.apiService.saveProject(data).subscribe( info => { this.toast(table) } );
+              this.apiService.saveProject(data).subscribe({ next: () => { this.toast(table) }, error: err => { this.errorToast(err.error)}});
             }
           }
           break;
@@ -111,11 +111,11 @@ export class DynamicFormComponent implements OnInit {
             this.storageService.upImg(data.name, data.imgUrl, 4).then( urlImg =>{
               data.imgUrl = urlImg;
               if(data.imgUrl != null){
-                this.apiService.saveSkill(data).subscribe( info => { this.toast(table) } );
+                this.apiService.saveSkill(data).subscribe({ next: () => { this.toast(table) }, error: err => { this.errorToast(err.error)}});
               }
             });
           }else{
-            this.apiService.saveSkill(data).subscribe( info => { this.toast(table) } );
+            this.apiService.saveSkill(data).subscribe({ next: () => { this.toast(table) }, error: err => { this.errorToast(err.error)}});
           }
           break;
         }
@@ -126,6 +126,10 @@ export class DynamicFormComponent implements OnInit {
   toast(table:any){
     this.messageService.add({key: 'dynf', severity:'success', summary: table+' info saved', detail: 'Wait or close this toast to reload.', life: 3000});
     this.form.disable();
+  }
+
+  errorToast(msg: any){
+    this.messageService.add({key: 'dynf', severity: 'error', summary: 'Error', detail: `${msg.error || msg.message}`, life: 3000});
   }
 
   onClose(){

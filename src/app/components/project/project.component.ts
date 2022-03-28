@@ -75,11 +75,14 @@ export class ProjectComponent implements OnInit {
   }
 
   deleteProject(id: any){
-    this.apiService.deleteProject(id).subscribe(
-      data => {
+    this.apiService.deleteProject(id).subscribe({
+      next: (data) => {
         this.messageService.add({key: 'pro', severity:'warn', summary: data.message, detail: 'Wait or close this toast to reload.', life: 3000});
+      },
+      error: (err) => {
+        this.messageService.add({key: 'pro', severity:'warn', summary: 'Error', detail: `${err.error.message || err.error.error}`, life: 3000});
       }
-    );
+    });
   }
 
   toastClose(){

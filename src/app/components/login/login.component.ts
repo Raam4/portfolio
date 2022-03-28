@@ -5,7 +5,7 @@ import { NewUser } from 'src/app/models/new-user';
 import { AuthService } from 'src/app/services/auth.service';
 import { TokenService } from 'src/app/services/token.service';
 import { MessageService } from 'primeng/api';
-import { FormBuilder, Validators } from '@angular/forms';
+import { AbstractControl, FormBuilder, ValidationErrors, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-login',
@@ -20,14 +20,19 @@ export class LoginComponent implements OnInit {
     password: ['', Validators.required]
   });
 
-  signinForm = this.formBuilder.group({
+  signupForm = this.formBuilder.group({
     email: ['', Validators.required],
     signUsername: ['', Validators.required],
     signPassword: ['', Validators.required],
     confirmPassword: ['', Validators.required]
-  });
-
-  errmsg: string;
+  },{
+    validators: (control: AbstractControl): ValidationErrors | null => {
+      const password = control.get('signPassword');
+      const confirmPassword = control.get('confirmPassword');
+      return password?.value === confirmPassword?.value ? null : { notmatched: true };
+    }
+  }
+  );
 
   newUser: NewUser;
 
@@ -43,21 +48,27 @@ export class LoginComponent implements OnInit {
 
   onLogin(): void{
     const loginUser = new LoginUser(this.loginForm.get('username')?.value, this.loginForm.get('password')?.value);
-    this.authService.login(loginUser).subscribe(
-      data => {
+    this.authService.login(loginUser).subscribe({
+      next: (data) => {
         this.tokenService.setToken(data.token);
         this.router.navigate(['/portfolio/home']);
       },
-    )
+      error: (err) => {
+        this.messageService.add({severity:'error', summary: 'Invalid login', detail: `${err.error.message || err.error.error}`})
+      }
+    })
   }
 
-  onSignin(): void{
-    this.newUser = new NewUser(this.signinForm.get('email')?.value, this.signinForm.get('signUsername')?.value, this.signinForm.get('signPassword')?.value);
-    this.authService.newUs(this.newUser).subscribe(
-      data => {
-        this.messageService.add({severity:'success', summary: 'Signin complete!', detail: 'You can now login.'});
+  onSignup(): void{
+    this.newUser = new NewUser(this.signupForm.get('email')?.value, this.signupForm.get('signUsername')?.value, this.signupForm.get('signPassword')?.value);
+    this.authService.newUs(this.newUser).subscribe({
+      next: (data) => {
+        this.messageService.add({severity:'success', summary: 'Signup complete!', detail: 'You can now login.'});
+      },
+      error: (err) => {
+        this.messageService.add({severity:'error', summary: 'Signup error!', detail: `${err.error.message || err.error.error}`})
       }
-    );
+    });
   }
 
 }

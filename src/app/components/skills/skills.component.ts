@@ -55,15 +55,18 @@ export class SkillsComponent implements OnInit {
   }
 
   deleteSkill(id: any, name: any){
-    this.apiService.deleteSkill(id).subscribe(
-      data => {
+    this.apiService.deleteSkill(id).subscribe({
+      next: data => {
         this.messageService.add({key: 'ski', severity:'warn', summary: data.message, detail: 'Skill deleted', life: 3000});
         if(name != null){
           this.storageService.delImgSkill(name);
           this.loadSkill();
         }
+      },
+      error: err => {
+        this.messageService.add({key: 'ski', severity:'warn', summary: 'Error', detail: `${err.error.message || err.error.error}`, life: 3000});
       }
-    );
+    });
   }
 
   isLogged(){
