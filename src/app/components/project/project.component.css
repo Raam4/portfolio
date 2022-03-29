@@ -37,3 +37,8 @@
         max-width: 400px;
     }
 }
+@media (max-width: 450px){
+    .p-carousel{
+        max-width: 300px;
+    }
+}
