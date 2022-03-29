@@ -18,4 +18,22 @@
     #project{
         background-attachment: fixed;
     }
+    .p-carousel{
+        max-width: 720px;
+    }
+}
+@media (max-width: 960px){
+    .p-carousel{
+        max-width: 600px;
+    }
+}
+@media (max-width: 720px){
+    .p-carousel{
+        max-width: 500px;
+    }
+}
+@media (max-width: 590px){
+    .p-carousel{
+        max-width: 400px;
+    }
 }

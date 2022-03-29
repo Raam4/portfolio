@@ -8,11 +8,11 @@
                 </h1>
         </ng-template>
             <div id="car-content">
-                <p-carousel [value]="projects" [showIndicators]="true" [style]="{'max-width': '650px'}" [circular]="true" [autoplayInterval]="15000">
+                <p-carousel [value]="projects" [showIndicators]="true" [circular]="true" [autoplayInterval]="10000">
                     <ng-template pTemplate="item" let-item>
-                        <p-card header={{item.name}} subheader={{item.techs}}>
+                        <p-card [header]='item.name' [subheader]='item.techs'>
                             <ng-template pTemplate="header">
-                                <p-image [src]="item.imgUrl" width="400px" height="300px"></p-image>
+                                <p-image [src]="item.imgUrl" height="300px"></p-image>
                             </ng-template>
                             <ng-template *ngIf="isLogged()">
                                 <p-button type="button" icon="pi pi-pencil" class="mx-1" (click)="editInfo(item)"></p-button>
